@@ -1,0 +1,139 @@
+---
+import Layout from '../layouts/Layout.astro'
+
+const services = [
+  {
+    id: 'trituracion',
+    title: 'Trituración de Materiales',
+    subtitle: 'Destrucción Confidencial',
+    description: 'Servicios completamente confidenciales para la destrucción de documentos sensibles y materiales clasificados. Garantizamos el 100% de confidencialidad con personal entrenado y protocolos de seguridad estrictos.',
+    features: ['100% confidencialidad garantizada', 'Destrucción móvil y en sitio', 'Personal especializado y entrenado', 'Protocolos de seguridad estrictos', 'Certificado de destrucción incluido'],
+    materials: ['Documentos sensibles', 'Material de empaque', 'Logos y material de marca', 'Material confidencial clasificado'],
+    icon: `<svg class="w-8 h-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 3H5a2 2 0 00-2 2v4m6-6h10a2 2 0 012 2v4M9 3v6m0 0H3m6 0h12M3 9v10a2 2 0 002 2h14a2 2 0 002-2V9"/><path d="M9 15l3-3 3 3" stroke-linecap="round" stroke-linejoin="round"/></svg>`,
+  },
+  {
+    id: 'decomiso',
+    title: 'Decomiso de Equipos Electrónicos',
+    subtitle: 'Certificado NAID',
+    description: 'Destrucción especializada y disposición de equipos electrónicos con certificación de seguridad y responsabilidad ambiental. Servicio certificado NAID para la destrucción de discos duros.',
+    features: ['Trituración de discos duros (NAID)', 'Desmantelamiento de líneas de producción', 'Des-manufactura de equipos', 'Certificado de decomiso incluido', 'Cumplimiento HIPAA y FACTA'],
+    materials: ['Discos duros y servidores', 'Equipos de cómputo', 'Componentes electrónicos', 'Líneas de producción'],
+    icon: `<svg class="w-8 h-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/><path d="M7 8h4M7 11h2" stroke-linecap="round"/></svg>`,
+  },
+  {
+    id: 'outsourcing',
+    title: 'Outsourcing',
+    subtitle: 'Gestión Integral de Residuos',
+    description: 'Gestión comprensiva de residuos sólidos industriales no-peligrosos con personal especializado y auditorías continuas. Reducción de costos del 5-30% con consolidación de suplidores.',
+    features: ['Aumento en tasas de reciclaje', 'Reducción de costos 5-30%', 'Consolidación de suplidores', 'Consultoría permanente', 'Auditorías continuas'],
+    materials: ['Residuos sólidos industriales', 'Material reciclable', 'Material no-reciclable', 'Desperdicios no-peligrosos'],
+    icon: `<svg class="w-8 h-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>`,
+  },
+  {
+    id: 'logistica',
+    title: 'Logística',
+    subtitle: 'Infraestructura Propia',
+    description: 'Cuatro plantas de procesamiento estratégicamente ubicadas en Puerto Rico con flota propia de camiones y maquinaria especializada. Servicio personalizado y eficiente.',
+    features: ['Cuatro instalaciones en PR', 'Flota privada de camiones', 'Balas verticales y compactadoras', 'Servicios personalizados', 'Cobertura isla-ancha'],
+    materials: ['Transporte de materiales', 'Procesamiento centralizado', 'Logística de recogido', 'Almacenamiento temporal'],
+    icon: `<svg class="w-8 h-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 3h15v13H1z"/><path d="M16 8h4l3 4v5h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>`,
+  },
+  {
+    id: 'municipal',
+    title: 'Reciclaje Municipal',
+    subtitle: 'Programas Personalizados',
+    description: 'Programas de reciclaje personalizados para municipios con consultoría experta y reportes detallados de procesamiento. Servimos a comunidades a través de toda la isla.',
+    features: ['Programas personalizados', 'Consultoría de expertos', 'Reportes detallados', 'Educación comunitaria', 'Recogido programado'],
+    materials: ['Cartón', 'Plásticos (tipos 1-2)', 'Papel blanco y de color', 'Periódicos y revistas', 'Botellas de vidrio'],
+    icon: `<svg class="w-8 h-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 21h18M3 7l9-4 9 4M4 7v14M20 7v14"/><path d="M9 21V11h6v10"/><path d="M9 11h6"/></svg>`,
+  },
+  {
+    id: 'recreo',
+    title: 'ReCreo — Materiales de Construcción',
+    subtitle: 'Manufactura Sostenible',
+    description: 'Línea de materiales de construcción fabricados con plástico y vidrio 100% reciclado. Productos duraderos, resistentes y ecológicos para proyectos de construcción sostenible.',
+    features: ['Plástico 100% reciclado', 'Vidrio reciclado', 'Resistente a intemperie', 'Sin mantenimiento', 'Tienda Eco Outlet en Hatillo'],
+    materials: ['Columnas recicladas', 'Jambas', 'Bloques', 'Perfiles plástico-madera'],
+    icon: `<svg class="w-8 h-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 3L2 9l10 6 10-6-10-6z"/><path d="M2 17l10 6 10-6"/><path d="M2 13l10 6 10-6"/></svg>`,
+  },
+]
+---
+
+<Layout title="Servicios | Reciclaje del Norte" description="Servicios integrales de reciclaje, destrucción confidencial, outsourcing y manufactura de materiales reciclados en Puerto Rico.">
+  <!-- Page Hero -->
+  <section class="relative bg-rdn-green-dark pt-32 pb-20 overflow-hidden">
+    <div class="absolute inset-0 opacity-5" style="background-image: url(&quot;data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E&quot;)"></div>
+    <div class="absolute top-0 right-0 w-96 h-96 bg-rdn-lime/5 rounded-full blur-[120px]"></div>
+
+    <div class="relative mx-auto max-w-[1440px] px-6 md:px-12 lg:px-20">
+      <span class="label-tag mb-6 inline-flex animate-fade-up">Nuestros Servicios</span>
+      <h1 class="heading-xl text-white mb-6 animate-fade-up stagger-1">
+        Soluciones que<br/>
+        <span class="text-rdn-lime">transforman</span>
+      </h1>
+      <p class="text-xl text-white/60 max-w-2xl leading-relaxed animate-fade-up stagger-2">
+        Más de 30 años ofreciendo servicios integrales de reciclaje, destrucción confidencial y manufactura sostenible en Puerto Rico.
+      </p>
+    </div>
+  </section>
+
+  <!-- Services -->
+  <section class="section-padding bg-rdn-white">
+    <div class="mx-auto max-w-[1440px]">
+      <div class="space-y-24">
+        {services.map((service, i) => (
+          <div id={service.id} class={`grid lg:grid-cols-2 gap-12 items-center reveal ${i % 2 !== 0 ? 'lg:direction-rtl' : ''}`}>
+            <div class={i % 2 !== 0 ? 'lg:order-2' : ''}>
+              <span class="label-tag mb-4 inline-flex">{service.subtitle}</span>
+              <h2 class="heading-md text-rdn-charcoal mb-4">{service.title}</h2>
+              <p class="text-rdn-gray text-lg leading-relaxed mb-8">{service.description}</p>
+
+              <div class="space-y-3 mb-8">
+                {service.features.map(feat => (
+                  <div class="flex items-start gap-3">
+                    <svg class="w-5 h-5 text-rdn-green mt-0.5 shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+                    <span class="text-rdn-charcoal">{feat}</span>
+                  </div>
+                ))}
+              </div>
+
+              <a href="/contacto" class="btn-primary">
+                Solicitar este servicio
+                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </a>
+            </div>
+
+            <div class={i % 2 !== 0 ? 'lg:order-1' : ''}>
+              <div class="bg-rdn-sand rounded-3xl p-10">
+                <div class="w-16 h-16 bg-rdn-green rounded-2xl flex items-center justify-center text-white mb-8" set:html={service.icon} />
+                <h4 class="font-bold text-rdn-charcoal mb-4">Materiales</h4>
+                <div class="grid grid-cols-2 gap-3">
+                  {service.materials.map(mat => (
+                    <div class="bg-white rounded-xl px-4 py-3 text-sm text-rdn-charcoal">{mat}</div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section-padding bg-rdn-green relative overflow-hidden">
+    <div class="absolute top-0 right-0 w-96 h-96 bg-rdn-lime/10 rounded-full blur-[100px]"></div>
+    <div class="mx-auto max-w-[1440px] relative text-center reveal">
+      <h2 class="heading-lg text-white mb-6">
+        ¿Necesita un servicio<br/><span class="text-rdn-lime">personalizado?</span>
+      </h2>
+      <p class="text-lg text-white/60 max-w-2xl mx-auto mb-10">
+        Nuestro equipo diseñará una solución a la medida de sus necesidades. Cotización gratuita.
+      </p>
+      <a href="/contacto" class="btn-lime">
+        Solicitar Cotización
+        <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </div>
+  </section>
+</Layout>

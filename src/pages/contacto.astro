@@ -1,0 +1,161 @@
+---
+import Layout from '../layouts/Layout.astro'
+
+const locations = [
+  {
+    name: 'Arecibo (Principal)',
+    address: 'Bo. Higuillar calle Tiara, Arecibo, PR 00612',
+    phone: '787-262-0305',
+    type: 'Planta de procesamiento',
+  },
+  {
+    name: 'Hatillo',
+    address: 'Carr. #2 KM 88.1 Ave. Coballes Gandía, Hatillo PR 00659',
+    phone: '787-262-1825',
+    type: 'Planta de procesamiento',
+  },
+  {
+    name: 'Santurce',
+    address: 'Área Metropolitana, Santurce PR',
+    phone: '787-726-0444',
+    type: 'Centro de servicio',
+  },
+  {
+    name: 'ReCreo Eco Outlet',
+    address: 'Carr. #2 KM 88.1 Ave. Coballes Gandía, edif. 142, Hatillo PR 00659',
+    phone: '787-544-4343',
+    type: 'Tienda · Lun-Sáb 8am-5pm',
+  },
+]
+---
+
+<Layout title="Contacto | Reciclaje del Norte" description="Contáctenos para cotizaciones, servicios de reciclaje o información general. Oficinas en Arecibo, Hatillo y Santurce, Puerto Rico.">
+  <!-- Hero -->
+  <section class="relative bg-rdn-green-dark pt-32 pb-20 overflow-hidden">
+    <div class="absolute top-0 right-0 w-96 h-96 bg-rdn-lime/5 rounded-full blur-[120px]"></div>
+    <div class="relative mx-auto max-w-[1440px] px-6 md:px-12 lg:px-20">
+      <span class="label-tag mb-6 inline-flex animate-fade-up">Contacto</span>
+      <h1 class="heading-xl text-white mb-6 animate-fade-up stagger-1">
+        Hablemos de su<br/><span class="text-rdn-lime">proyecto</span>
+      </h1>
+      <p class="text-xl text-white/60 max-w-2xl leading-relaxed animate-fade-up stagger-2">
+        Estamos aquí para ayudarle. Solicite una cotización gratuita o comuníquese con nuestro equipo de expertos.
+      </p>
+    </div>
+  </section>
+
+  <!-- Contact form + Info -->
+  <section class="section-padding bg-rdn-white">
+    <div class="mx-auto max-w-[1440px]">
+      <div class="grid lg:grid-cols-5 gap-12">
+        <!-- Form -->
+        <div class="lg:col-span-3 reveal">
+          <div class="bg-white rounded-3xl p-8 md:p-12 border border-rdn-sand-dark">
+            <h2 class="text-2xl font-bold text-rdn-charcoal mb-2">Solicitar Cotización</h2>
+            <p class="text-rdn-gray mb-8">Complete el formulario y le responderemos en menos de 24 horas.</p>
+
+            <form class="space-y-6">
+              <div class="grid md:grid-cols-2 gap-6">
+                <div>
+                  <label class="block text-sm font-medium text-rdn-charcoal mb-2">Nombre *</label>
+                  <input type="text" required class="w-full px-4 py-3 rounded-xl border border-rdn-sand-dark bg-rdn-sand/50 text-rdn-charcoal placeholder:text-rdn-gray/50 focus:outline-none focus:ring-2 focus:ring-rdn-green/20 focus:border-rdn-green transition-all" placeholder="Su nombre completo" />
+                </div>
+                <div>
+                  <label class="block text-sm font-medium text-rdn-charcoal mb-2">Empresa</label>
+                  <input type="text" class="w-full px-4 py-3 rounded-xl border border-rdn-sand-dark bg-rdn-sand/50 text-rdn-charcoal placeholder:text-rdn-gray/50 focus:outline-none focus:ring-2 focus:ring-rdn-green/20 focus:border-rdn-green transition-all" placeholder="Nombre de su empresa" />
+                </div>
+              </div>
+
+              <div class="grid md:grid-cols-2 gap-6">
+                <div>
+                  <label class="block text-sm font-medium text-rdn-charcoal mb-2">Email *</label>
+                  <input type="email" required class="w-full px-4 py-3 rounded-xl border border-rdn-sand-dark bg-rdn-sand/50 text-rdn-charcoal placeholder:text-rdn-gray/50 focus:outline-none focus:ring-2 focus:ring-rdn-green/20 focus:border-rdn-green transition-all" placeholder="su@email.com" />
+                </div>
+                <div>
+                  <label class="block text-sm font-medium text-rdn-charcoal mb-2">Teléfono *</label>
+                  <input type="tel" required class="w-full px-4 py-3 rounded-xl border border-rdn-sand-dark bg-rdn-sand/50 text-rdn-charcoal placeholder:text-rdn-gray/50 focus:outline-none focus:ring-2 focus:ring-rdn-green/20 focus:border-rdn-green transition-all" placeholder="787-000-0000" />
+                </div>
+              </div>
+
+              <div>
+                <label class="block text-sm font-medium text-rdn-charcoal mb-2">Servicio de interés</label>
+                <select class="w-full px-4 py-3 rounded-xl border border-rdn-sand-dark bg-rdn-sand/50 text-rdn-charcoal focus:outline-none focus:ring-2 focus:ring-rdn-green/20 focus:border-rdn-green transition-all">
+                  <option value="">Seleccione un servicio</option>
+                  <option value="trituracion">Trituración de Materiales</option>
+                  <option value="decomiso">Decomiso de Equipos Electrónicos</option>
+                  <option value="outsourcing">Outsourcing</option>
+                  <option value="logistica">Logística</option>
+                  <option value="municipal">Reciclaje Municipal</option>
+                  <option value="recreo">ReCreo Materiales</option>
+                  <option value="otro">Otro</option>
+                </select>
+              </div>
+
+              <div>
+                <label class="block text-sm font-medium text-rdn-charcoal mb-2">Mensaje *</label>
+                <textarea required rows="5" class="w-full px-4 py-3 rounded-xl border border-rdn-sand-dark bg-rdn-sand/50 text-rdn-charcoal placeholder:text-rdn-gray/50 focus:outline-none focus:ring-2 focus:ring-rdn-green/20 focus:border-rdn-green transition-all resize-none" placeholder="Describa su necesidad o proyecto..."></textarea>
+              </div>
+
+              <button type="submit" class="btn-primary w-full justify-center">
+                Enviar Solicitud
+                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>
+              </button>
+            </form>
+          </div>
+        </div>
+
+        <!-- Contact info -->
+        <div class="lg:col-span-2 space-y-6 reveal">
+          <!-- Quick contact -->
+          <div class="bg-rdn-green-dark rounded-2xl p-8 text-white">
+            <h3 class="text-lg font-bold mb-6">Contacto Directo</h3>
+            <div class="space-y-4">
+              <a href="tel:787-262-0305" class="flex items-center gap-4 p-3 rounded-xl hover:bg-white/5 transition-colors">
+                <div class="w-10 h-10 bg-rdn-lime/20 rounded-lg flex items-center justify-center shrink-0">
+                  <svg class="w-5 h-5 text-rdn-lime" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+                </div>
+                <div>
+                  <p class="text-sm font-medium">787-262-0305</p>
+                  <p class="text-xs text-white/50">Línea principal</p>
+                </div>
+              </a>
+              <a href="mailto:serviciosrdn@reciclajedelnorte.com" class="flex items-center gap-4 p-3 rounded-xl hover:bg-white/5 transition-colors">
+                <div class="w-10 h-10 bg-rdn-lime/20 rounded-lg flex items-center justify-center shrink-0">
+                  <svg class="w-5 h-5 text-rdn-lime" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><path d="M22 6l-10 7L2 6"/></svg>
+                </div>
+                <div>
+                  <p class="text-sm font-medium break-all">serviciosrdn@reciclajedelnorte.com</p>
+                  <p class="text-xs text-white/50">Email de servicios</p>
+                </div>
+              </a>
+              <div class="flex items-center gap-4 p-3">
+                <div class="w-10 h-10 bg-rdn-lime/20 rounded-lg flex items-center justify-center shrink-0">
+                  <svg class="w-5 h-5 text-rdn-lime" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+                </div>
+                <div>
+                  <p class="text-sm font-medium">P.O. Box 1822</p>
+                  <p class="text-xs text-white/50">Hatillo, PR</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Locations -->
+          <div class="space-y-4">
+            <h3 class="text-lg font-bold text-rdn-charcoal px-2">Nuestras Locaciones</h3>
+            {locations.map(loc => (
+              <div class="bg-white rounded-2xl p-6 border border-rdn-sand-dark hover:shadow-lg transition-shadow duration-300">
+                <div class="flex items-start justify-between mb-3">
+                  <h4 class="font-bold text-rdn-charcoal">{loc.name}</h4>
+                  <span class="text-[10px] font-medium uppercase tracking-wider text-rdn-green bg-rdn-lime/20 px-2 py-1 rounded-full whitespace-nowrap">{loc.type}</span>
+                </div>
+                <p class="text-sm text-rdn-gray mb-2">{loc.address}</p>
+                <a href={`tel:${loc.phone}`} class="text-sm text-rdn-green font-medium hover:text-rdn-green-light transition-colors">{loc.phone}</a>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>

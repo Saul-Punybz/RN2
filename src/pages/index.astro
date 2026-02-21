@@ -1,0 +1,485 @@
+---
+import Layout from '../layouts/Layout.astro'
+---
+
+<Layout>
+  <!-- ==================== HERO ==================== -->
+  <section class="relative min-h-screen flex items-center overflow-hidden bg-rdn-green-dark">
+    <!-- Background pattern -->
+    <div class="absolute inset-0 opacity-[0.03]" style="background-image: url(&quot;data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E&quot;)"></div>
+
+    <!-- Gradient orbs -->
+    <div class="absolute top-1/4 -right-32 w-[600px] h-[600px] bg-rdn-green/40 rounded-full blur-[120px]"></div>
+    <div class="absolute bottom-1/4 -left-32 w-[400px] h-[400px] bg-rdn-lime/10 rounded-full blur-[100px]"></div>
+
+    <div class="relative mx-auto max-w-[1440px] px-6 md:px-12 lg:px-20 pt-32 pb-20 w-full">
+      <div class="grid lg:grid-cols-2 gap-12 items-center">
+        <div>
+          <div class="animate-fade-up">
+            <span class="label-tag mb-8 inline-flex">
+              <span class="w-2 h-2 bg-rdn-lime rounded-full animate-pulse"></span>
+              Cooperativa líder desde 1994
+            </span>
+          </div>
+
+          <h1 class="heading-xl text-white mb-8 animate-fade-up stagger-1">
+            Transformamos
+            <span class="text-rdn-lime">residuos</span>
+            en recursos
+          </h1>
+
+          <p class="text-lg md:text-xl text-white/60 max-w-xl mb-10 leading-relaxed animate-fade-up stagger-2">
+            Somos la empresa #1 en servicios de reciclaje en Puerto Rico. Soluciones integrales de reciclaje, destrucción confidencial y manufactura sostenible.
+          </p>
+
+          <div class="flex flex-wrap gap-4 animate-fade-up stagger-3">
+            <a href="/contacto" class="btn-lime">
+              Solicitar Cotización
+              <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+            <a href="/servicios" class="btn-outline border-white/30 text-white hover:bg-white hover:text-rdn-green-dark">
+              Ver Servicios
+            </a>
+          </div>
+
+          <!-- Trust badges -->
+          <div class="mt-14 flex flex-wrap items-center gap-8 animate-fade-up stagger-4">
+            <div class="flex items-center gap-2">
+              <svg class="w-5 h-5 text-rdn-lime" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+              <span class="text-sm text-white/50">Certificado NAID</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <svg class="w-5 h-5 text-rdn-lime" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+              <span class="text-sm text-white/50">iSigma</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <svg class="w-5 h-5 text-rdn-lime" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+              <span class="text-sm text-white/50">HIPAA Compliant</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Hero visual -->
+        <div class="hidden lg:block relative animate-fade-in stagger-3">
+          <div class="relative">
+            <!-- Stats floating cards -->
+            <div class="absolute -top-4 -left-4 bg-white/10 backdrop-blur-xl rounded-2xl p-6 border border-white/10 z-10">
+              <p class="text-3xl font-bold text-rdn-lime">30+</p>
+              <p class="text-xs text-white/60 mt-1">Años de<br/>experiencia</p>
+            </div>
+            <div class="absolute -bottom-4 -right-4 bg-white/10 backdrop-blur-xl rounded-2xl p-6 border border-white/10 z-10">
+              <p class="text-3xl font-bold text-rdn-lime">100K</p>
+              <p class="text-xs text-white/60 mt-1">Toneladas<br/>recicladas</p>
+            </div>
+
+            <!-- Main graphic -->
+            <div class="bg-gradient-to-br from-rdn-green to-rdn-green-light rounded-3xl aspect-square flex items-center justify-center p-16 border border-white/5">
+              <svg class="w-full h-full text-rdn-lime/20" viewBox="0 0 200 200" fill="none" stroke="currentColor" stroke-width="1.5">
+                <circle cx="100" cy="100" r="80" />
+                <path d="M100 20 L100 40 M100 160 L100 180 M20 100 L40 100 M160 100 L180 100" />
+                <path d="M60 60 C60 60, 80 40, 100 60 C120 80, 140 60, 140 60" stroke-width="2" class="text-rdn-lime/40" />
+                <path d="M60 100 C60 100, 80 80, 100 100 C120 120, 140 100, 140 100" stroke-width="2" class="text-rdn-lime/40" />
+                <path d="M60 140 C60 140, 80 120, 100 140 C120 160, 140 140, 140 140" stroke-width="2" class="text-rdn-lime/40" />
+                <!-- Recycle arrows -->
+                <g transform="translate(70,70)" class="text-rdn-lime">
+                  <path d="M30 5 L45 25 L25 25 Z" fill="currentColor" opacity="0.6"/>
+                  <path d="M55 40 L35 50 L45 30 Z" fill="currentColor" opacity="0.6"/>
+                  <path d="M15 50 L20 30 L30 48 Z" fill="currentColor" opacity="0.6"/>
+                  <path d="M30 10 Q50 5, 52 35" stroke="currentColor" stroke-width="2" fill="none"/>
+                  <path d="M52 35 Q55 55, 30 52" stroke="currentColor" stroke-width="2" fill="none"/>
+                  <path d="M30 52 Q10 45, 30 10" stroke="currentColor" stroke-width="2" fill="none"/>
+                </g>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Scroll indicator -->
+    <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 animate-bounce">
+      <span class="text-[10px] uppercase tracking-[0.2em] text-white/30">Scroll</span>
+      <div class="w-5 h-8 border-2 border-white/20 rounded-full flex items-start justify-center p-1">
+        <div class="w-1 h-2 bg-rdn-lime rounded-full animate-pulse"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== STATS MARQUEE ==================== -->
+  <section class="bg-rdn-lime py-5 overflow-hidden">
+    <div class="flex whitespace-nowrap">
+      <div class="marquee-track flex items-center gap-12 pr-12">
+        {Array(2).fill(null).map(() => (
+          <>
+            <span class="text-sm font-bold text-rdn-green-dark uppercase tracking-wider">200+ Empleados</span>
+            <span class="text-rdn-green/40">&bull;</span>
+            <span class="text-sm font-bold text-rdn-green-dark uppercase tracking-wider">100,000 Toneladas Recicladas</span>
+            <span class="text-rdn-green/40">&bull;</span>
+            <span class="text-sm font-bold text-rdn-green-dark uppercase tracking-wider">4 Locaciones</span>
+            <span class="text-rdn-green/40">&bull;</span>
+            <span class="text-sm font-bold text-rdn-green-dark uppercase tracking-wider">30+ Años de Experiencia</span>
+            <span class="text-rdn-green/40">&bull;</span>
+            <span class="text-sm font-bold text-rdn-green-dark uppercase tracking-wider">200 Horas Comunitarias</span>
+            <span class="text-rdn-green/40">&bull;</span>
+            <span class="text-sm font-bold text-rdn-green-dark uppercase tracking-wider">Cooperativa de Trabajadores</span>
+            <span class="text-rdn-green/40">&bull;</span>
+          </>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== SERVICES ==================== -->
+  <section id="servicios" class="section-padding bg-rdn-white">
+    <div class="mx-auto max-w-[1440px]">
+      <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-16 reveal">
+        <div>
+          <span class="label-tag mb-4 inline-flex">Nuestros Servicios</span>
+          <h2 class="heading-lg text-rdn-charcoal">
+            Soluciones<br/>
+            <span class="text-rdn-green">integrales</span>
+          </h2>
+        </div>
+        <p class="text-rdn-gray max-w-md text-lg leading-relaxed">
+          Ofrecemos una gama completa de servicios de reciclaje y gestión de residuos para empresas, municipios e industrias.
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Service 1 -->
+        <a href="/servicios#trituracion" class="group bg-white rounded-2xl p-8 border border-rdn-sand-dark card-hover reveal">
+          <div class="w-14 h-14 bg-rdn-green/10 rounded-xl flex items-center justify-center mb-6 group-hover:bg-rdn-green transition-colors duration-500">
+            <svg class="w-7 h-7 text-rdn-green group-hover:text-white transition-colors" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M9 3H5a2 2 0 00-2 2v4m6-6h10a2 2 0 012 2v4M9 3v6m0 0H3m6 0h12M3 9v10a2 2 0 002 2h14a2 2 0 002-2V9" />
+              <path d="M9 15l3-3 3 3" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold text-rdn-charcoal mb-3">Trituración de Materiales</h3>
+          <p class="text-rdn-gray text-sm leading-relaxed mb-6">Destrucción confidencial y segura de documentos sensibles con protocolos estrictos y certificación de destrucción.</p>
+          <div class="flex items-center gap-2 text-rdn-green text-sm font-semibold group-hover:gap-4 transition-all duration-300">
+            <span>Más información</span>
+            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </div>
+        </a>
+
+        <!-- Service 2 -->
+        <a href="/servicios#decomiso" class="group bg-white rounded-2xl p-8 border border-rdn-sand-dark card-hover reveal">
+          <div class="w-14 h-14 bg-rdn-green/10 rounded-xl flex items-center justify-center mb-6 group-hover:bg-rdn-green transition-colors duration-500">
+            <svg class="w-7 h-7 text-rdn-green group-hover:text-white transition-colors" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <rect x="2" y="3" width="20" height="14" rx="2"/>
+              <path d="M8 21h8M12 17v4"/>
+              <path d="M7 8h4M7 11h2" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold text-rdn-charcoal mb-3">Decomiso Electrónico</h3>
+          <p class="text-rdn-gray text-sm leading-relaxed mb-6">Destrucción certificada NAID de discos duros y equipos electrónicos. Desmantelamiento y des-manufactura responsable.</p>
+          <div class="flex items-center gap-2 text-rdn-green text-sm font-semibold group-hover:gap-4 transition-all duration-300">
+            <span>Más información</span>
+            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </div>
+        </a>
+
+        <!-- Service 3 -->
+        <a href="/servicios#outsourcing" class="group bg-white rounded-2xl p-8 border border-rdn-sand-dark card-hover reveal">
+          <div class="w-14 h-14 bg-rdn-green/10 rounded-xl flex items-center justify-center mb-6 group-hover:bg-rdn-green transition-colors duration-500">
+            <svg class="w-7 h-7 text-rdn-green group-hover:text-white transition-colors" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <circle cx="12" cy="12" r="10"/>
+              <path d="M2 12h20M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/>
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold text-rdn-charcoal mb-3">Outsourcing</h3>
+          <p class="text-rdn-gray text-sm leading-relaxed mb-6">Gestión integral de residuos sólidos industriales con personal especializado, auditorías continuas y reducción de costos de 5-30%.</p>
+          <div class="flex items-center gap-2 text-rdn-green text-sm font-semibold group-hover:gap-4 transition-all duration-300">
+            <span>Más información</span>
+            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </div>
+        </a>
+
+        <!-- Service 4 -->
+        <a href="/servicios#logistica" class="group bg-white rounded-2xl p-8 border border-rdn-sand-dark card-hover reveal">
+          <div class="w-14 h-14 bg-rdn-green/10 rounded-xl flex items-center justify-center mb-6 group-hover:bg-rdn-green transition-colors duration-500">
+            <svg class="w-7 h-7 text-rdn-green group-hover:text-white transition-colors" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M1 3h15v13H1z"/>
+              <path d="M16 8h4l3 4v5h-7V8z"/>
+              <circle cx="5.5" cy="18.5" r="2.5"/>
+              <circle cx="18.5" cy="18.5" r="2.5"/>
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold text-rdn-charcoal mb-3">Logística</h3>
+          <p class="text-rdn-gray text-sm leading-relaxed mb-6">Flota propia de camiones y maquinaria especializada. Cuatro plantas de procesamiento estratégicamente ubicadas.</p>
+          <div class="flex items-center gap-2 text-rdn-green text-sm font-semibold group-hover:gap-4 transition-all duration-300">
+            <span>Más información</span>
+            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </div>
+        </a>
+
+        <!-- Service 5 -->
+        <a href="/servicios#municipal" class="group bg-white rounded-2xl p-8 border border-rdn-sand-dark card-hover reveal">
+          <div class="w-14 h-14 bg-rdn-green/10 rounded-xl flex items-center justify-center mb-6 group-hover:bg-rdn-green transition-colors duration-500">
+            <svg class="w-7 h-7 text-rdn-green group-hover:text-white transition-colors" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M3 21h18M3 7l9-4 9 4M4 7v14M20 7v14"/>
+              <path d="M9 21V11h6v10"/>
+              <path d="M9 11h6"/>
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold text-rdn-charcoal mb-3">Reciclaje Municipal</h3>
+          <p class="text-rdn-gray text-sm leading-relaxed mb-6">Programas personalizados para municipios. Cartón, plásticos, papel, periódicos, revistas y botellas de vidrio.</p>
+          <div class="flex items-center gap-2 text-rdn-green text-sm font-semibold group-hover:gap-4 transition-all duration-300">
+            <span>Más información</span>
+            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </div>
+        </a>
+
+        <!-- Service 6 — ReCreo -->
+        <a href="/servicios#recreo" class="group bg-rdn-green rounded-2xl p-8 text-white card-hover reveal">
+          <div class="w-14 h-14 bg-rdn-lime/20 rounded-xl flex items-center justify-center mb-6 group-hover:bg-rdn-lime transition-colors duration-500">
+            <svg class="w-7 h-7 text-rdn-lime group-hover:text-rdn-green-dark transition-colors" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M12 3L2 9l10 6 10-6-10-6z"/>
+              <path d="M2 17l10 6 10-6"/>
+              <path d="M2 13l10 6 10-6"/>
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold mb-3">ReCreo — Materiales</h3>
+          <p class="text-white/70 text-sm leading-relaxed mb-6">Columnas, jambas, bloques y perfiles plástico-madera fabricados con plástico y vidrio 100% reciclado.</p>
+          <div class="flex items-center gap-2 text-rdn-lime text-sm font-semibold group-hover:gap-4 transition-all duration-300">
+            <span>Más información</span>
+            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== ABOUT / IMPACT ==================== -->
+  <section class="section-padding bg-rdn-sand">
+    <div class="mx-auto max-w-[1440px]">
+      <div class="grid lg:grid-cols-2 gap-16 items-center">
+        <div class="reveal">
+          <span class="label-tag mb-4 inline-flex">Sobre Nosotros</span>
+          <h2 class="heading-lg text-rdn-charcoal mb-6">
+            Una cooperativa con
+            <span class="text-rdn-green">propósito</span>
+          </h2>
+          <p class="text-rdn-gray text-lg leading-relaxed mb-6">
+            Reciclaje del Norte es una cooperativa de trabajadores puertorriqueña con más de 30 años de experiencia. Más de 200 empleados-dueños comprometidos con la economía circular y la responsabilidad ambiental.
+          </p>
+          <p class="text-rdn-gray leading-relaxed mb-10">
+            Operamos cuatro instalaciones de procesamiento en Puerto Rico, sirviendo a empresas, industrias y municipios con soluciones integrales de reciclaje y destrucción confidencial certificada.
+          </p>
+
+          <div class="grid grid-cols-2 gap-6 mb-10">
+            <div class="bg-white rounded-xl p-6 text-center">
+              <p class="text-4xl font-bold text-rdn-green" data-count="200" data-suffix="+">0</p>
+              <p class="text-sm text-rdn-gray mt-2">Empleados-dueños</p>
+            </div>
+            <div class="bg-white rounded-xl p-6 text-center">
+              <p class="text-4xl font-bold text-rdn-green" data-count="100000" data-suffix="">0</p>
+              <p class="text-sm text-rdn-gray mt-2">Toneladas recicladas</p>
+            </div>
+            <div class="bg-white rounded-xl p-6 text-center">
+              <p class="text-4xl font-bold text-rdn-green" data-count="4" data-suffix="">0</p>
+              <p class="text-sm text-rdn-gray mt-2">Locaciones</p>
+            </div>
+            <div class="bg-white rounded-xl p-6 text-center">
+              <p class="text-4xl font-bold text-rdn-green" data-count="30" data-suffix="+">0</p>
+              <p class="text-sm text-rdn-gray mt-2">Años de experiencia</p>
+            </div>
+          </div>
+
+          <a href="/nosotros" class="btn-primary">
+            Conoce nuestra historia
+            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+
+        <!-- Values / Visual -->
+        <div class="space-y-6 reveal">
+          <div class="bg-rdn-green-dark rounded-2xl p-10 text-white">
+            <h3 class="text-2xl font-bold mb-4">Nuestra Misión</h3>
+            <p class="text-white/70 leading-relaxed">
+              Proveer soluciones innovadoras y sostenibles de reciclaje, contribuyendo a la economía circular y al bienestar ambiental de Puerto Rico, mientras generamos empleos dignos a través de nuestro modelo cooperativo.
+            </p>
+          </div>
+
+          <div class="grid grid-cols-2 gap-6">
+            <div class="bg-white rounded-2xl p-8">
+              <div class="w-10 h-10 bg-rdn-lime/20 rounded-lg flex items-center justify-center mb-4">
+                <svg class="w-5 h-5 text-rdn-green" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+              </div>
+              <h4 class="font-bold text-rdn-charcoal mb-2">Seguridad</h4>
+              <p class="text-sm text-rdn-gray">Certificados NAID e iSigma</p>
+            </div>
+            <div class="bg-white rounded-2xl p-8">
+              <div class="w-10 h-10 bg-rdn-lime/20 rounded-lg flex items-center justify-center mb-4">
+                <svg class="w-5 h-5 text-rdn-green" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
+              </div>
+              <h4 class="font-bold text-rdn-charcoal mb-2">Cooperativa</h4>
+              <p class="text-sm text-rdn-gray">Empresa de trabajadores-dueños</p>
+            </div>
+            <div class="bg-white rounded-2xl p-8">
+              <div class="w-10 h-10 bg-rdn-lime/20 rounded-lg flex items-center justify-center mb-4">
+                <svg class="w-5 h-5 text-rdn-green" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              </div>
+              <h4 class="font-bold text-rdn-charcoal mb-2">Local</h4>
+              <p class="text-sm text-rdn-gray">100% puertorriqueña</p>
+            </div>
+            <div class="bg-white rounded-2xl p-8">
+              <div class="w-10 h-10 bg-rdn-lime/20 rounded-lg flex items-center justify-center mb-4">
+                <svg class="w-5 h-5 text-rdn-green" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v18M3 12h18"/><circle cx="12" cy="12" r="10"/></svg>
+              </div>
+              <h4 class="font-bold text-rdn-charcoal mb-2">Sostenible</h4>
+              <p class="text-sm text-rdn-gray">Economía circular</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== PROCESS ==================== -->
+  <section class="section-padding bg-white">
+    <div class="mx-auto max-w-[1440px]">
+      <div class="text-center mb-16 reveal">
+        <span class="label-tag mb-4 inline-flex mx-auto">Cómo Trabajamos</span>
+        <h2 class="heading-lg text-rdn-charcoal">
+          Proceso <span class="text-rdn-green">simple</span> y eficiente
+        </h2>
+      </div>
+
+      <div class="grid md:grid-cols-4 gap-8 reveal">
+        <div class="text-center group">
+          <div class="relative mx-auto w-20 h-20 bg-rdn-green/10 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-rdn-green transition-colors duration-500">
+            <span class="text-2xl font-bold text-rdn-green group-hover:text-white transition-colors">01</span>
+            <div class="hidden md:block absolute top-1/2 left-full w-full h-0.5 bg-rdn-sand-dark -translate-y-1/2"></div>
+          </div>
+          <h3 class="font-bold text-rdn-charcoal mb-2">Contacto</h3>
+          <p class="text-sm text-rdn-gray">Solicite una cotización o evaluación sin costo.</p>
+        </div>
+        <div class="text-center group">
+          <div class="relative mx-auto w-20 h-20 bg-rdn-green/10 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-rdn-green transition-colors duration-500">
+            <span class="text-2xl font-bold text-rdn-green group-hover:text-white transition-colors">02</span>
+            <div class="hidden md:block absolute top-1/2 left-full w-full h-0.5 bg-rdn-sand-dark -translate-y-1/2"></div>
+          </div>
+          <h3 class="font-bold text-rdn-charcoal mb-2">Evaluación</h3>
+          <p class="text-sm text-rdn-gray">Analizamos sus necesidades y diseñamos un plan personalizado.</p>
+        </div>
+        <div class="text-center group">
+          <div class="relative mx-auto w-20 h-20 bg-rdn-green/10 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-rdn-green transition-colors duration-500">
+            <span class="text-2xl font-bold text-rdn-green group-hover:text-white transition-colors">03</span>
+            <div class="hidden md:block absolute top-1/2 left-full w-full h-0.5 bg-rdn-sand-dark -translate-y-1/2"></div>
+          </div>
+          <h3 class="font-bold text-rdn-charcoal mb-2">Ejecución</h3>
+          <p class="text-sm text-rdn-gray">Recogido, procesamiento y documentación con total transparencia.</p>
+        </div>
+        <div class="text-center group">
+          <div class="relative mx-auto w-20 h-20 bg-rdn-green/10 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-rdn-green transition-colors duration-500">
+            <span class="text-2xl font-bold text-rdn-green group-hover:text-white transition-colors">04</span>
+          </div>
+          <h3 class="font-bold text-rdn-charcoal mb-2">Certificación</h3>
+          <p class="text-sm text-rdn-gray">Reciba su certificado de destrucción y reportes detallados.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== MUSEO + RECREO ==================== -->
+  <section class="section-padding bg-rdn-green-dark overflow-hidden">
+    <div class="mx-auto max-w-[1440px]">
+      <div class="grid lg:grid-cols-2 gap-8">
+        <!-- Museo -->
+        <div class="bg-gradient-to-br from-rdn-green to-rdn-green-light rounded-3xl p-10 md:p-14 reveal">
+          <span class="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.2em] text-rdn-lime bg-rdn-lime/10 px-4 py-2 rounded-full mb-6">
+            Iniciativa Comunitaria
+          </span>
+          <h3 class="text-3xl md:text-4xl font-bold text-white mb-4">Museo del Reciclaje</h3>
+          <p class="text-white/70 leading-relaxed mb-8">
+            Organización sin fines de lucro fundada en 2016, dedicada a promover el arte, la educación y la investigación con materiales reciclados. Un espacio donde los desechos se transforman en cultura.
+          </p>
+          <a href="/nosotros#museo" class="inline-flex items-center gap-2 text-rdn-lime font-semibold hover:gap-4 transition-all duration-300">
+            Descubrir más
+            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+
+        <!-- ReCreo -->
+        <div class="bg-rdn-sand rounded-3xl p-10 md:p-14 reveal">
+          <span class="label-tag mb-6 inline-flex">Tienda</span>
+          <h3 class="text-3xl md:text-4xl font-bold text-rdn-charcoal mb-4">ReCreo Eco Outlet</h3>
+          <p class="text-rdn-gray leading-relaxed mb-4">
+            Materiales de construcción fabricados con plástico y vidrio 100% reciclado. Columnas, jambas, bloques y perfiles plástico-madera para proyectos sostenibles.
+          </p>
+          <div class="bg-white rounded-xl p-4 mb-8">
+            <div class="flex items-start gap-3">
+              <svg class="w-5 h-5 text-rdn-green mt-0.5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              <div>
+                <p class="text-sm font-medium text-rdn-charcoal">Carr. #2 KM 88.1, Hatillo PR</p>
+                <p class="text-xs text-rdn-gray">Lun-Sáb 8am-5pm &bull; 787-544-4343</p>
+              </div>
+            </div>
+          </div>
+          <a href="/servicios#recreo" class="inline-flex items-center gap-2 text-rdn-green font-semibold hover:gap-4 transition-all duration-300">
+            Ver productos
+            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== PARTNERS ==================== -->
+  <section class="section-padding bg-white">
+    <div class="mx-auto max-w-[1440px]">
+      <div class="text-center mb-12 reveal">
+        <span class="label-tag mb-4 inline-flex mx-auto">Afiliaciones</span>
+        <h2 class="heading-md text-rdn-charcoal">Nuestros socios y certificaciones</h2>
+      </div>
+      <div class="flex flex-wrap items-center justify-center gap-12 reveal">
+        <div class="text-center opacity-60 hover:opacity-100 transition-opacity duration-300">
+          <p class="text-sm font-bold text-rdn-charcoal">NAID</p>
+          <p class="text-xs text-rdn-gray">Certified</p>
+        </div>
+        <div class="text-center opacity-60 hover:opacity-100 transition-opacity duration-300">
+          <p class="text-sm font-bold text-rdn-charcoal">iSigma</p>
+          <p class="text-xs text-rdn-gray">Member</p>
+        </div>
+        <div class="text-center opacity-60 hover:opacity-100 transition-opacity duration-300">
+          <p class="text-sm font-bold text-rdn-charcoal">Asociación de Industriales</p>
+          <p class="text-xs text-rdn-gray">de Puerto Rico</p>
+        </div>
+        <div class="text-center opacity-60 hover:opacity-100 transition-opacity duration-300">
+          <p class="text-sm font-bold text-rdn-charcoal">Cámara de Comercio</p>
+          <p class="text-xs text-rdn-gray">de Puerto Rico</p>
+        </div>
+        <div class="text-center opacity-60 hover:opacity-100 transition-opacity duration-300">
+          <p class="text-sm font-bold text-rdn-charcoal">PR MSDC</p>
+          <p class="text-xs text-rdn-gray">Minority Supplier</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== CTA ==================== -->
+  <section class="section-padding bg-rdn-green relative overflow-hidden">
+    <div class="absolute top-0 right-0 w-96 h-96 bg-rdn-lime/10 rounded-full blur-[100px]"></div>
+    <div class="absolute bottom-0 left-0 w-64 h-64 bg-rdn-green-dark/30 rounded-full blur-[80px]"></div>
+    <div class="mx-auto max-w-[1440px] relative text-center reveal">
+      <h2 class="heading-lg text-white mb-6">
+        ¿Listo para reciclar<br/>
+        <span class="text-rdn-lime">responsablemente?</span>
+      </h2>
+      <p class="text-lg text-white/60 max-w-2xl mx-auto mb-10 leading-relaxed">
+        Contáctenos hoy para una cotización gratuita. Nuestro equipo de expertos diseñará una solución a la medida de sus necesidades.
+      </p>
+      <div class="flex flex-wrap justify-center gap-4">
+        <a href="/contacto" class="btn-lime">
+          Solicitar Cotización
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+        <a href="tel:787-262-0305" class="btn-outline border-white/30 text-white hover:bg-white hover:text-rdn-green">
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+          787-262-0305
+        </a>
+      </div>
+    </div>
+  </section>
+</Layout>

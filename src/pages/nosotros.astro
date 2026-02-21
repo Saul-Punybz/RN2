@@ -1,0 +1,149 @@
+---
+import Layout from '../layouts/Layout.astro'
+
+const timeline = [
+  { year: '1994', title: 'Fundación', text: 'Se establece Reciclaje del Norte como cooperativa de trabajadores en Arecibo, Puerto Rico.' },
+  { year: '2000s', title: 'Expansión', text: 'Apertura de nuevas instalaciones en Hatillo y Santurce. Crecimiento a más de 100 empleados.' },
+  { year: '2016', title: 'Museo del Reciclaje', text: 'Fundación del Museo del Reciclaje, organización sin fines de lucro para arte y educación ambiental.' },
+  { year: '2020s', title: 'ReCreo', text: 'Lanzamiento de la marca ReCreo para materiales de construcción reciclados. Apertura del Eco Outlet en Hatillo.' },
+  { year: '2025', title: 'Innovación', text: 'Estreno de nueva línea de materiales de construcción reciclados. Más de 200 empleados-dueños.' },
+]
+---
+
+<Layout title="Sobre Nosotros | Reciclaje del Norte" description="Conoce la historia de Reciclaje del Norte, cooperativa líder en reciclaje en Puerto Rico con más de 30 años de experiencia.">
+  <!-- Hero -->
+  <section class="relative bg-rdn-green-dark pt-32 pb-20 overflow-hidden">
+    <div class="absolute top-0 right-0 w-96 h-96 bg-rdn-lime/5 rounded-full blur-[120px]"></div>
+    <div class="relative mx-auto max-w-[1440px] px-6 md:px-12 lg:px-20">
+      <span class="label-tag mb-6 inline-flex animate-fade-up">Sobre Nosotros</span>
+      <h1 class="heading-xl text-white mb-6 animate-fade-up stagger-1">
+        Más que una<br/><span class="text-rdn-lime">empresa</span>
+      </h1>
+      <p class="text-xl text-white/60 max-w-2xl leading-relaxed animate-fade-up stagger-2">
+        Somos una cooperativa de trabajadores-dueños comprometidos con Puerto Rico, el medio ambiente y la economía circular.
+      </p>
+    </div>
+  </section>
+
+  <!-- About content -->
+  <section class="section-padding bg-rdn-white">
+    <div class="mx-auto max-w-[1440px]">
+      <div class="grid lg:grid-cols-2 gap-16 items-center mb-24 reveal">
+        <div>
+          <h2 class="heading-lg text-rdn-charcoal mb-6">
+            Cooperativa de <span class="text-rdn-green">trabajadores-dueños</span>
+          </h2>
+          <p class="text-rdn-gray text-lg leading-relaxed mb-6">
+            Reciclaje del Norte Inc. P.T. es una cooperativa puertorriqueña fundada en 1994. Nuestro modelo cooperativo significa que cada uno de nuestros más de 200 empleados es también dueño de la empresa.
+          </p>
+          <p class="text-rdn-gray leading-relaxed mb-6">
+            Este modelo nos permite tomar decisiones que benefician tanto a nuestros trabajadores como al medio ambiente. Cada tonelada que reciclamos es un paso hacia un Puerto Rico más sostenible.
+          </p>
+          <p class="text-rdn-gray leading-relaxed">
+            Operamos cuatro instalaciones de procesamiento estratégicamente ubicadas en la isla: dos en Arecibo, una en Hatillo y una en Santurce, dándanos cobertura completa para servir a empresas, industrias y municipios.
+          </p>
+        </div>
+        <div class="grid grid-cols-2 gap-6">
+          <div class="bg-rdn-green rounded-2xl p-8 text-white text-center">
+            <p class="text-5xl font-bold text-rdn-lime" data-count="200" data-suffix="+">0</p>
+            <p class="text-sm text-white/60 mt-3">Empleados-dueños</p>
+          </div>
+          <div class="bg-rdn-sand rounded-2xl p-8 text-center">
+            <p class="text-5xl font-bold text-rdn-green" data-count="30" data-suffix="+">0</p>
+            <p class="text-sm text-rdn-gray mt-3">Años operando</p>
+          </div>
+          <div class="bg-rdn-sand rounded-2xl p-8 text-center">
+            <p class="text-5xl font-bold text-rdn-green" data-count="4" data-suffix="">0</p>
+            <p class="text-sm text-rdn-gray mt-3">Locaciones</p>
+          </div>
+          <div class="bg-rdn-green-dark rounded-2xl p-8 text-white text-center">
+            <p class="text-5xl font-bold text-rdn-lime" data-count="100" data-suffix="K">0</p>
+            <p class="text-sm text-white/60 mt-3">Toneladas recicladas</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Mission / Vision -->
+      <div class="grid md:grid-cols-2 gap-8 mb-24 reveal">
+        <div class="bg-rdn-green-dark rounded-3xl p-10 md:p-14 text-white">
+          <div class="w-12 h-12 bg-rdn-lime/20 rounded-xl flex items-center justify-center mb-6">
+            <svg class="w-6 h-6 text-rdn-lime" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
+          </div>
+          <h3 class="text-2xl font-bold mb-4">Nuestra Misión</h3>
+          <p class="text-white/70 leading-relaxed">
+            Proveer soluciones innovadoras y sostenibles de reciclaje, contribuyendo a la economía circular y al bienestar ambiental de Puerto Rico, mientras generamos empleos dignos y oportunidades de crecimiento a través de nuestro modelo cooperativo.
+          </p>
+        </div>
+        <div class="bg-rdn-green rounded-3xl p-10 md:p-14 text-white">
+          <div class="w-12 h-12 bg-rdn-lime/20 rounded-xl flex items-center justify-center mb-6">
+            <svg class="w-6 h-6 text-rdn-lime" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+          </div>
+          <h3 class="text-2xl font-bold mb-4">Nuestra Visión</h3>
+          <p class="text-white/70 leading-relaxed">
+            Ser la empresa líder en reciclaje y sostenibilidad en el Caribe, demostrando que el modelo cooperativo puede impulsar el desarrollo económico mientras protegemos nuestros recursos naturales para las futuras generaciones.
+          </p>
+        </div>
+      </div>
+
+      <!-- Timeline -->
+      <div class="mb-24 reveal">
+        <div class="text-center mb-16">
+          <span class="label-tag mb-4 inline-flex mx-auto">Nuestra Historia</span>
+          <h2 class="heading-lg text-rdn-charcoal">30+ años de <span class="text-rdn-green">impacto</span></h2>
+        </div>
+        <div class="relative">
+          <div class="hidden md:block absolute left-1/2 top-0 bottom-0 w-0.5 bg-rdn-sand-dark -translate-x-1/2"></div>
+          <div class="space-y-12">
+            {timeline.map((item, i) => (
+              <div class={`md:flex items-center gap-8 ${i % 2 === 0 ? '' : 'md:flex-row-reverse'}`}>
+                <div class={`md:w-1/2 ${i % 2 === 0 ? 'md:text-right md:pr-12' : 'md:text-left md:pl-12'}`}>
+                  <span class="text-sm font-bold text-rdn-lime bg-rdn-green-dark px-4 py-2 rounded-full">{item.year}</span>
+                  <h3 class="text-xl font-bold text-rdn-charcoal mt-4 mb-2">{item.title}</h3>
+                  <p class="text-rdn-gray">{item.text}</p>
+                </div>
+                <div class="hidden md:flex w-4 h-4 bg-rdn-green rounded-full border-4 border-rdn-white relative z-10 shrink-0"></div>
+                <div class="md:w-1/2"></div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      <!-- Museo -->
+      <div id="museo" class="bg-gradient-to-br from-rdn-green-dark to-rdn-green rounded-3xl p-10 md:p-16 text-white reveal">
+        <div class="grid lg:grid-cols-2 gap-12 items-center">
+          <div>
+            <span class="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.2em] text-rdn-lime bg-rdn-lime/10 px-4 py-2 rounded-full mb-6">
+              Iniciativa Comunitaria
+            </span>
+            <h2 class="heading-md text-white mb-6">Museo del Reciclaje</h2>
+            <p class="text-white/70 leading-relaxed mb-6">
+              Fundado en 2016, el Museo del Reciclaje es una organización sin fines de lucro dedicada a promover el arte, la educación y la investigación con materiales reciclados.
+            </p>
+            <p class="text-white/70 leading-relaxed mb-8">
+              Un espacio único donde los desechos se transforman en obras de arte y herramientas educativas, inspirando a la próxima generación a pensar diferente sobre los materiales que descartamos.
+            </p>
+            <div class="flex flex-wrap gap-4">
+              <span class="bg-white/10 px-4 py-2 rounded-full text-sm">Arte reciclado</span>
+              <span class="bg-white/10 px-4 py-2 rounded-full text-sm">Educación ambiental</span>
+              <span class="bg-white/10 px-4 py-2 rounded-full text-sm">Investigación</span>
+              <span class="bg-white/10 px-4 py-2 rounded-full text-sm">Talleres</span>
+            </div>
+          </div>
+          <div class="bg-white/10 rounded-2xl p-10 backdrop-blur-sm border border-white/10">
+            <div class="text-center">
+              <div class="w-20 h-20 bg-rdn-lime/20 rounded-2xl flex items-center justify-center mx-auto mb-6">
+                <svg class="w-10 h-10 text-rdn-lime" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 21h18M3 7l9-4 9 4M4 7v14M20 7v14M9 21V11h6v10"/></svg>
+              </div>
+              <h3 class="text-xl font-bold mb-2">Visítanos</h3>
+              <p class="text-white/60 text-sm mb-6">Experiencias educativas para escuelas, familias y empresas</p>
+              <a href="/contacto" class="btn-lime text-sm">
+                Coordinar visita
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>

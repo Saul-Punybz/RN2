@@ -1,0 +1,142 @@
+---
+const navLinks = [
+  { label: 'Servicios', href: '/servicios' },
+  { label: 'Nosotros', href: '/nosotros' },
+  { label: 'Locaciones', href: '/locaciones' },
+  { label: 'Blog', href: '/blog' },
+  { label: 'Empleos', href: '/empleos' },
+]
+---
+
+<header id="site-header" class="fixed top-0 left-0 right-0 z-50 transition-all duration-500">
+  <div class="mx-auto max-w-[1440px] px-6 md:px-12 lg:px-20">
+    <nav class="flex items-center justify-between h-20 md:h-24">
+      <!-- Logo -->
+      <a href="/" class="relative z-10 flex items-center gap-3 group">
+        <div class="w-10 h-10 md:w-12 md:h-12 bg-rdn-green rounded-xl flex items-center justify-center transition-transform duration-300 group-hover:scale-105">
+          <svg class="w-6 h-6 md:w-7 md:h-7 text-rdn-lime" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M7 19H4.815a1.83 1.83 0 0 1-1.57-.881 1.785 1.785 0 0 1-.004-1.784L7.196 9.5" />
+            <path d="M11 19h8.203a1.83 1.83 0 0 0 1.556-.89 1.784 1.784 0 0 0 0-1.775l-1.226-2.12" />
+            <path d="m14 16-3 3 3 3" />
+            <path d="M8.293 13.596 4.875 7.97l1.227-2.122a1.83 1.83 0 0 1 1.582-.886h5.316" />
+            <path d="m9.5 5.5 2-3.5" />
+            <path d="M14.5 3.5 12 0" />
+          </svg>
+        </div>
+        <div class="hidden sm:block">
+          <span class="block text-lg font-bold leading-none header-text-color transition-colors duration-300">RDN</span>
+          <span class="block text-[10px] font-medium uppercase tracking-[0.15em] header-subtext-color transition-colors duration-300">Reciclaje del Norte</span>
+        </div>
+      </a>
+
+      <!-- Desktop nav -->
+      <div class="hidden lg:flex items-center gap-1">
+        {navLinks.map(link => (
+          <a
+            href={link.href}
+            class="px-5 py-2 text-sm font-medium header-link-color transition-colors duration-300 rounded-full hover:bg-white/10"
+          >
+            {link.label}
+          </a>
+        ))}
+      </div>
+
+      <!-- CTA + Mobile toggle -->
+      <div class="flex items-center gap-4">
+        <a href="/contacto" class="hidden md:inline-flex items-center gap-2 bg-rdn-lime text-rdn-green-dark px-6 py-2.5 rounded-full text-sm font-semibold transition-all duration-300 hover:bg-rdn-lime-light hover:shadow-lg hover:-translate-y-0.5">
+          Cotización
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+
+        <!-- Mobile menu button -->
+        <button id="mobile-toggle" class="lg:hidden relative z-10 w-10 h-10 flex flex-col items-center justify-center gap-1.5" aria-label="Menú">
+          <span class="burger-line w-6 h-0.5 bg-current header-text-color transition-all duration-300 origin-center"></span>
+          <span class="burger-line w-6 h-0.5 bg-current header-text-color transition-all duration-300 origin-center"></span>
+          <span class="burger-line w-4 h-0.5 bg-current header-text-color transition-all duration-300 origin-center"></span>
+        </button>
+      </div>
+    </nav>
+  </div>
+
+  <!-- Mobile menu -->
+  <div id="mobile-menu" class="lg:hidden fixed inset-0 bg-rdn-green-dark/98 backdrop-blur-xl z-40 opacity-0 pointer-events-none transition-all duration-500 flex items-center justify-center">
+    <nav class="text-center space-y-2">
+      {navLinks.map((link, i) => (
+        <a
+          href={link.href}
+          class="block text-4xl md:text-5xl font-bold text-white py-3 hover:text-rdn-lime transition-colors duration-300"
+          style={`transition-delay: ${i * 0.05}s`}
+        >
+          {link.label}
+        </a>
+      ))}
+      <div class="pt-8">
+        <a href="/contacto" class="btn-lime">
+          Contáctanos
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+      <div class="pt-8 flex justify-center gap-6">
+        <a href="tel:787-262-0305" class="text-white/60 hover:text-rdn-lime text-sm transition-colors">787-262-0305</a>
+        <a href="mailto:serviciosrdn@reciclajedelnorte.com" class="text-white/60 hover:text-rdn-lime text-sm transition-colors">Email</a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<style>
+  /* Default (transparent over hero) */
+  .header-text-color { color: white; }
+  .header-subtext-color { color: rgba(255,255,255,0.7); }
+  .header-link-color { color: rgba(255,255,255,0.85); }
+
+  /* Scrolled state */
+  #site-header.scrolled {
+    background-color: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  }
+
+  #site-header.scrolled .header-text-color { color: #1A1A1A; }
+  #site-header.scrolled .header-subtext-color { color: #6B7280; }
+  #site-header.scrolled .header-link-color { color: #1A1A1A; }
+  #site-header.scrolled .header-link-color:hover { color: #0D503C; }
+
+  /* Mobile open state */
+  #mobile-menu.open {
+    opacity: 1;
+    pointer-events: auto;
+  }
+</style>
+
+<script>
+  const header = document.getElementById('site-header')!
+  const toggle = document.getElementById('mobile-toggle')!
+  const menu = document.getElementById('mobile-menu')!
+
+  // Scroll handler
+  const onScroll = () => {
+    if (window.scrollY > 80) {
+      header.classList.add('scrolled')
+    } else {
+      header.classList.remove('scrolled')
+    }
+  }
+  window.addEventListener('scroll', onScroll, { passive: true })
+  onScroll()
+
+  // Mobile menu toggle
+  toggle.addEventListener('click', () => {
+    menu.classList.toggle('open')
+    document.body.style.overflow = menu.classList.contains('open') ? 'hidden' : ''
+  })
+
+  // Close on link click
+  menu.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      menu.classList.remove('open')
+      document.body.style.overflow = ''
+    })
+  })
+</script>

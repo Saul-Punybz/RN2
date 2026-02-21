@@ -1,0 +1,114 @@
+---
+import Layout from '../layouts/Layout.astro'
+
+const locations = [
+  {
+    name: 'Arecibo #1 — Oficina Principal',
+    address: 'Bo. Higuillar calle Tiara, Arecibo, PR 00612',
+    phone: '787-262-0305',
+    description: 'Planta de procesamiento principal y oficinas administrativas. Centro de operaciones de la cooperativa.',
+    services: ['Procesamiento de materiales', 'Trituración', 'Decomiso electrónico', 'Administración'],
+  },
+  {
+    name: 'Arecibo #2',
+    address: 'Arecibo, PR',
+    phone: '787-262-0305',
+    description: 'Segunda planta de procesamiento en Arecibo. Capacidad adicional para manejo de volúmenes grandes.',
+    services: ['Procesamiento de materiales', 'Almacenamiento', 'Logística'],
+  },
+  {
+    name: 'Hatillo',
+    address: 'Carr. #2 KM 88.1 Ave. Coballes Gandía, Hatillo PR 00659',
+    phone: '787-262-1825',
+    description: 'Planta de procesamiento y sede del ReCreo Eco Outlet. Manufactura de materiales de construcción reciclados.',
+    services: ['Procesamiento', 'ReCreo manufactura', 'Eco Outlet tienda', 'Logística'],
+  },
+  {
+    name: 'Santurce — Área Metro',
+    address: 'Santurce, PR',
+    phone: '787-726-0444',
+    description: 'Centro de servicio para el área metropolitana de San Juan. Punto de recogido y coordinación logística.',
+    services: ['Recogido de materiales', 'Coordinación logística', 'Servicio al cliente'],
+  },
+]
+---
+
+<Layout title="Locaciones | Reciclaje del Norte" description="Cuatro locaciones estratégicas en Puerto Rico: Arecibo, Hatillo y Santurce. Cobertura completa para toda la isla.">
+  <!-- Hero -->
+  <section class="relative bg-rdn-green-dark pt-32 pb-20 overflow-hidden">
+    <div class="absolute top-0 right-0 w-96 h-96 bg-rdn-lime/5 rounded-full blur-[120px]"></div>
+    <div class="relative mx-auto max-w-[1440px] px-6 md:px-12 lg:px-20">
+      <span class="label-tag mb-6 inline-flex animate-fade-up">Locaciones</span>
+      <h1 class="heading-xl text-white mb-6 animate-fade-up stagger-1">
+        Cubrimos toda<br/><span class="text-rdn-lime">la isla</span>
+      </h1>
+      <p class="text-xl text-white/60 max-w-2xl leading-relaxed animate-fade-up stagger-2">
+        Cuatro instalaciones estratégicamente ubicadas para servir a toda Puerto Rico con eficiencia y rapidez.
+      </p>
+    </div>
+  </section>
+
+  <!-- Locations -->
+  <section class="section-padding bg-rdn-white">
+    <div class="mx-auto max-w-[1440px]">
+      <div class="grid md:grid-cols-2 gap-8 mb-16">
+        {locations.map((loc, i) => (
+          <div class={`rounded-3xl p-8 md:p-10 reveal ${i === 0 ? 'bg-rdn-green-dark text-white md:col-span-2' : 'bg-white border border-rdn-sand-dark'}`}>
+            <div class={i === 0 ? 'grid md:grid-cols-2 gap-10' : ''}>
+              <div>
+                <div class="flex items-start justify-between mb-4">
+                  <div>
+                    <h3 class={`text-2xl font-bold mb-2 ${i === 0 ? 'text-white' : 'text-rdn-charcoal'}`}>{loc.name}</h3>
+                    {i === 0 && <span class="text-xs font-semibold uppercase tracking-wider text-rdn-lime bg-rdn-lime/10 px-3 py-1 rounded-full">Sede Principal</span>}
+                  </div>
+                </div>
+
+                <div class="flex items-start gap-3 mb-3">
+                  <svg class={`w-5 h-5 mt-0.5 shrink-0 ${i === 0 ? 'text-rdn-lime' : 'text-rdn-green'}`} viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                  <p class={`text-sm ${i === 0 ? 'text-white/70' : 'text-rdn-gray'}`}>{loc.address}</p>
+                </div>
+
+                <div class="flex items-center gap-3 mb-6">
+                  <svg class={`w-5 h-5 shrink-0 ${i === 0 ? 'text-rdn-lime' : 'text-rdn-green'}`} viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+                  <a href={`tel:${loc.phone}`} class={`text-sm font-medium ${i === 0 ? 'text-rdn-lime hover:text-rdn-lime-light' : 'text-rdn-green hover:text-rdn-green-light'} transition-colors`}>{loc.phone}</a>
+                </div>
+
+                <p class={`leading-relaxed ${i === 0 ? 'text-white/60' : 'text-rdn-gray'}`}>{loc.description}</p>
+              </div>
+
+              <div>
+                <h4 class={`text-sm font-semibold uppercase tracking-wider mb-4 ${i === 0 ? 'text-white/40' : 'text-rdn-gray'}`}>Servicios disponibles</h4>
+                <div class="flex flex-wrap gap-2">
+                  {loc.services.map(s => (
+                    <span class={`text-sm px-4 py-2 rounded-full ${i === 0 ? 'bg-white/10 text-white/80' : 'bg-rdn-sand text-rdn-charcoal'}`}>{s}</span>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <!-- Mailing -->
+      <div class="text-center reveal">
+        <div class="bg-rdn-sand rounded-2xl p-8 inline-block">
+          <p class="text-sm text-rdn-gray mb-1">Dirección postal</p>
+          <p class="text-lg font-bold text-rdn-charcoal">P.O. Box 1822, Hatillo, PR</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section-padding bg-rdn-green relative overflow-hidden">
+    <div class="absolute top-0 right-0 w-96 h-96 bg-rdn-lime/10 rounded-full blur-[100px]"></div>
+    <div class="mx-auto max-w-[1440px] relative text-center reveal">
+      <h2 class="heading-lg text-white mb-6">¿Necesita servicio<br/><span class="text-rdn-lime">en su área?</span></h2>
+      <p class="text-lg text-white/60 max-w-2xl mx-auto mb-10">Servimos a toda la isla con nuestra flota propia. Contáctenos para coordinar recogido o visita.</p>
+      <a href="/contacto" class="btn-lime">
+        Contactar ahora
+        <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </div>
+  </section>
+</Layout>

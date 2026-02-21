@@ -1,0 +1,172 @@
+@import "tailwindcss";
+
+@theme {
+  --color-rdn-green: #0D503C;
+  --color-rdn-green-light: #14785A;
+  --color-rdn-green-dark: #072E23;
+  --color-rdn-lime: #A3E635;
+  --color-rdn-lime-light: #D9F99D;
+  --color-rdn-sand: #F5F0E8;
+  --color-rdn-sand-dark: #E8E0D0;
+  --color-rdn-charcoal: #1A1A1A;
+  --color-rdn-gray: #6B7280;
+  --color-rdn-white: #FAFAF9;
+
+  --font-display: 'Inter', system-ui, sans-serif;
+  --font-body: 'Inter', system-ui, sans-serif;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  body {
+    font-family: var(--font-body);
+    color: var(--color-rdn-charcoal);
+    background-color: var(--color-rdn-white);
+    overflow-x: hidden;
+  }
+
+  ::selection {
+    background-color: var(--color-rdn-lime);
+    color: var(--color-rdn-green-dark);
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply inline-flex items-center gap-2 bg-rdn-green text-white px-8 py-4 rounded-full font-semibold text-sm uppercase tracking-wider transition-all duration-300 hover:bg-rdn-green-light hover:shadow-lg hover:shadow-rdn-green/20 hover:-translate-y-0.5;
+  }
+
+  .btn-outline {
+    @apply inline-flex items-center gap-2 border-2 border-rdn-green text-rdn-green px-8 py-4 rounded-full font-semibold text-sm uppercase tracking-wider transition-all duration-300 hover:bg-rdn-green hover:text-white hover:-translate-y-0.5;
+  }
+
+  .btn-lime {
+    @apply inline-flex items-center gap-2 bg-rdn-lime text-rdn-green-dark px-8 py-4 rounded-full font-semibold text-sm uppercase tracking-wider transition-all duration-300 hover:bg-rdn-lime-light hover:shadow-lg hover:shadow-rdn-lime/30 hover:-translate-y-0.5;
+  }
+
+  .section-padding {
+    @apply px-6 py-24 md:px-12 lg:px-20 xl:px-32;
+  }
+
+  .heading-xl {
+    @apply text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold leading-[0.95] tracking-tight;
+  }
+
+  .heading-lg {
+    @apply text-4xl md:text-5xl lg:text-6xl font-bold leading-tight tracking-tight;
+  }
+
+  .heading-md {
+    @apply text-3xl md:text-4xl font-bold leading-tight tracking-tight;
+  }
+
+  .label-tag {
+    @apply inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.2em] text-rdn-green bg-rdn-lime/20 px-4 py-2 rounded-full;
+  }
+
+  .card-hover {
+    @apply transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .animate-fade-up {
+    animation: fadeUp 0.8s ease-out forwards;
+    opacity: 0;
+  }
+
+  .animate-fade-in {
+    animation: fadeIn 0.6s ease-out forwards;
+    opacity: 0;
+  }
+
+  .animate-slide-right {
+    animation: slideRight 0.8s ease-out forwards;
+    opacity: 0;
+  }
+
+  .stagger-1 { animation-delay: 0.1s; }
+  .stagger-2 { animation-delay: 0.2s; }
+  .stagger-3 { animation-delay: 0.3s; }
+  .stagger-4 { animation-delay: 0.4s; }
+  .stagger-5 { animation-delay: 0.5s; }
+  .stagger-6 { animation-delay: 0.6s; }
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideRight {
+  from {
+    opacity: 0;
+    transform: translateX(-40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.marquee-track {
+  animation: marquee 30s linear infinite;
+}
+
+.marquee-track:hover {
+  animation-play-state: paused;
+}
+
+/* Smooth reveal on scroll */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-rdn-sand);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-rdn-green);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-rdn-green-light);
+}
