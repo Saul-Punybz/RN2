@@ -1,0 +1,295 @@
+---
+import Layout from '../layouts/Layout.astro'
+
+const products = [
+  {
+    name: 'Columnas Recicladas',
+    description: 'Columnas estructurales fabricadas con plástico 100% reciclado. Resistentes a la intemperie, insectos y humedad. Ideales para terrazas, pérgolas y construcción general.',
+    features: ['100% plástico reciclado', 'Resistente a intemperie', 'Sin mantenimiento', 'No se pudre ni oxida'],
+    category: 'Estructural',
+  },
+  {
+    name: 'Jambas para Puertas',
+    description: 'Jambas y marcos fabricados con materiales reciclados. Perfectas para instalaciones interiores y exteriores con resistencia superior a la humedad.',
+    features: ['Resistente a humedad', 'Fácil instalación', 'Medidas estándar', 'Acabado profesional'],
+    category: 'Carpintería',
+  },
+  {
+    name: 'Bloques de Construcción',
+    description: 'Bloques modulares de plástico reciclado para muros, jardineras y construcción. Ligeros, duraderos y completamente ecológicos.',
+    features: ['Modular y versátil', 'Ligero pero resistente', 'Ecológico', 'Múltiples tamaños'],
+    category: 'Muros',
+  },
+  {
+    name: 'Perfiles Plástico-Madera',
+    description: 'Perfiles compuestos de plástico y madera reciclada. Aspecto de madera natural con la durabilidad del plástico. Para decks, cercas y mobiliario exterior.',
+    features: ['Aspecto de madera', 'Durabilidad de plástico', 'UV resistente', 'Fácil de cortar'],
+    category: 'Compuesto',
+  },
+  {
+    name: 'Tablas y Tablones',
+    description: 'Tablas de diferentes dimensiones para construcción, cercas y mobiliario. Fabricadas con plástico reciclado post-consumo procesado en nuestras plantas.',
+    features: ['Múltiples dimensiones', 'Anti-hongos', 'Impermeable', 'Reciclable nuevamente'],
+    category: 'General',
+  },
+  {
+    name: 'Paredes Plásticas',
+    description: 'Sistema de paredes modulares fabricadas completamente con plástico reciclado. Rápida instalación, eficientes y adaptables a cualquier tipología de vivienda.',
+    features: ['Completamente modular', 'Rápida instalación', 'Eficiente', 'Adaptable'],
+    category: 'Sistema',
+  },
+]
+
+const advantages = [
+  { title: 'Resistente', description: 'Impermeables, no se corroen, resisten insectos, hongos y condiciones extremas del trópico.', icon: 'shield', color: 'rdn-blue' },
+  { title: 'Durable', description: 'Resistente a la corrosión, incluso en condiciones extremas marítimas. Vida útil superior a materiales tradicionales.', icon: 'clock', color: 'rdn-green' },
+  { title: 'Ecológico', description: 'Compramos el costo del producto a nivel local. 100% plástico reciclado procesado en Puerto Rico.', icon: 'leaf', color: 'rdn-green' },
+  { title: 'Rápida Instalación', description: 'No necesita mantenimiento, fácil de instalar. Sistema modular que reduce tiempo de construcción.', icon: 'bolt', color: 'rdn-red' },
+]
+---
+
+<Layout title="ReCreo Eco Outlet | Materiales de Construcción Reciclados" description="Tienda de materiales de construcción fabricados con plástico y vidrio 100% reciclado. Columnas, jambas, bloques, perfiles y paredes plásticas en Hatillo, Puerto Rico.">
+
+  <!-- Hero -->
+  <section class="relative bg-rdn-blue-dark pt-32 pb-20 overflow-hidden">
+    <div class="absolute top-0 right-0 w-[500px] h-[500px] bg-rdn-green/10 rounded-full blur-[140px]"></div>
+    <div class="absolute bottom-0 left-0 w-[300px] h-[300px] bg-rdn-blue/20 rounded-full blur-[100px]"></div>
+
+    <div class="relative mx-auto max-w-[1440px] px-6 md:px-12 lg:px-20">
+      <div class="grid lg:grid-cols-2 gap-12 items-center">
+        <div>
+          <div class="flex items-center gap-4 mb-6 animate-fade-up">
+            <img src="/images/recreo.png" alt="ReCreo Puerto Rico" class="w-16 h-16 md:w-20 md:h-20 object-contain" />
+            <span class="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.2em] text-rdn-green bg-rdn-green/10 px-4 py-2 rounded-full">
+              Eco Outlet
+            </span>
+          </div>
+          <h1 class="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white leading-[0.95] tracking-tight mb-6 animate-fade-up stagger-1">
+            ReCreo
+            <span class="text-rdn-green">Materiales</span>
+          </h1>
+          <p class="text-lg md:text-xl text-white/60 max-w-xl leading-relaxed mb-8 animate-fade-up stagger-2">
+            Productos para el hogar y construcción hechos con materiales reciclados. El plástico de aquí se queda aquí.
+          </p>
+          <div class="flex flex-wrap gap-4 animate-fade-up stagger-3">
+            <a href="/contacto" class="inline-flex items-center gap-2 bg-rdn-green text-white px-8 py-4 rounded-full font-semibold text-sm uppercase tracking-wider transition-all duration-300 hover:bg-rdn-green-light hover:shadow-lg hover:-translate-y-0.5">
+              Cotizar Materiales
+              <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+            <a href="#productos" class="btn-outline border-white/30 text-white hover:bg-white hover:text-rdn-blue-dark">
+              Ver Catálogo
+            </a>
+          </div>
+
+          <!-- Store info -->
+          <div class="mt-10 flex flex-wrap gap-6 animate-fade-up stagger-4">
+            <div class="flex items-center gap-2">
+              <svg class="w-5 h-5 text-rdn-green" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              <span class="text-sm text-white/50">Hatillo, PR</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <svg class="w-5 h-5 text-rdn-green" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+              <span class="text-sm text-white/50">Lun-Sáb 8am-5pm</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <svg class="w-5 h-5 text-rdn-green" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+              <span class="text-sm text-white/50">787-544-4343</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Hero image -->
+        <div class="hidden lg:block animate-fade-in stagger-2">
+          <div class="rounded-3xl overflow-hidden border border-white/10 shadow-2xl">
+            <img src="/images/pared-plastica-1.jpeg" alt="Pared plástica reciclada - Sistema de construcción ReCreo" class="w-full h-auto object-cover" loading="eager" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why ReCreo -->
+  <section class="section-padding bg-rdn-white">
+    <div class="mx-auto max-w-[1440px]">
+      <div class="text-center mb-16 reveal">
+        <span class="label-tag mb-4 inline-flex mx-auto">Ventajas</span>
+        <h2 class="heading-lg text-rdn-charcoal">
+          ¿Por qué <span class="text-rdn-green">elegirnos?</span>
+        </h2>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 reveal">
+        {advantages.map(adv => (
+          <div class="bg-white rounded-2xl p-8 border border-rdn-sand-dark card-hover text-center">
+            <div class={`w-14 h-14 bg-${adv.color}/10 rounded-2xl flex items-center justify-center mx-auto mb-6`}>
+              {adv.icon === 'shield' && <svg class={`w-7 h-7 text-${adv.color}`} viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>}
+              {adv.icon === 'clock' && <svg class={`w-7 h-7 text-${adv.color}`} viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>}
+              {adv.icon === 'leaf' && <svg class={`w-7 h-7 text-${adv.color}`} viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M11 20A7 7 0 0 1 9.8 6.9C15.5 4.9 17 3.5 19 1c1 2 2 4.5 2 8 0 5.5-4.78 11-10 11z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/></svg>}
+              {adv.icon === 'bolt' && <svg class={`w-7 h-7 text-${adv.color}`} viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>}
+            </div>
+            <h3 class="text-lg font-bold text-rdn-charcoal mb-2">{adv.title}</h3>
+            <p class="text-sm text-rdn-gray leading-relaxed">{adv.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Product Photos Gallery -->
+  <section class="bg-rdn-sand py-16 overflow-hidden">
+    <div class="mx-auto max-w-[1440px] px-6 md:px-12 lg:px-20">
+      <div class="grid md:grid-cols-3 gap-6 reveal">
+        <div class="rounded-2xl overflow-hidden shadow-lg md:col-span-2 md:row-span-2">
+          <img src="/images/pared-plastica-1.jpeg" alt="Sistema de paredes plásticas modulares" class="w-full h-full object-cover hover:scale-105 transition-transform duration-700" loading="lazy" />
+        </div>
+        <div class="rounded-2xl overflow-hidden shadow-lg">
+          <img src="/images/pared-plastica-2.jpg" alt="Bloques y materiales plásticos reciclados" class="w-full h-64 object-cover hover:scale-105 transition-transform duration-700" loading="lazy" />
+        </div>
+        <div class="rounded-2xl overflow-hidden shadow-lg">
+          <img src="/images/pared-plastica-3.jpg" alt="Construcción con plástico reciclado" class="w-full h-64 object-cover hover:scale-105 transition-transform duration-700" loading="lazy" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Products Catalog -->
+  <section id="productos" class="section-padding bg-rdn-white">
+    <div class="mx-auto max-w-[1440px]">
+      <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-16 reveal">
+        <div>
+          <span class="label-tag mb-4 inline-flex">Catálogo</span>
+          <h2 class="heading-lg text-rdn-charcoal">
+            Nuestros <span class="text-rdn-blue">Productos</span>
+          </h2>
+        </div>
+        <p class="text-rdn-gray max-w-md text-lg leading-relaxed">
+          Materiales de construcción 100% reciclados, fabricados en nuestras plantas en Puerto Rico.
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {products.map(product => (
+          <div class="bg-white rounded-2xl p-8 border border-rdn-sand-dark card-hover reveal group">
+            <div class="flex items-center justify-between mb-4">
+              <span class="text-xs font-bold uppercase tracking-wider text-rdn-blue bg-rdn-blue/10 px-3 py-1 rounded-full">{product.category}</span>
+              <svg class="w-5 h-5 text-rdn-green" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M7 19H4.815a1.83 1.83 0 0 1-1.57-.881 1.785 1.785 0 0 1-.004-1.784L7.196 9.5"/><path d="M11 19h8.203a1.83 1.83 0 0 0 1.556-.89 1.784 1.784 0 0 0 0-1.775l-1.226-2.12"/><path d="m14 16-3 3 3 3"/><path d="M8.293 13.596 4.875 7.97l1.227-2.122a1.83 1.83 0 0 1 1.582-.886h5.316"/></svg>
+            </div>
+            <h3 class="text-xl font-bold text-rdn-charcoal mb-3">{product.name}</h3>
+            <p class="text-rdn-gray text-sm leading-relaxed mb-6">{product.description}</p>
+            <div class="space-y-2 mb-6">
+              {product.features.map(feat => (
+                <div class="flex items-center gap-2">
+                  <svg class="w-4 h-4 text-rdn-green shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+                  <span class="text-sm text-rdn-charcoal">{feat}</span>
+                </div>
+              ))}
+            </div>
+            <a href="/contacto" class="flex items-center gap-2 text-rdn-blue text-sm font-semibold group-hover:gap-4 transition-all duration-300">
+              <span>Solicitar cotización</span>
+              <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Expo / In Action Gallery -->
+  <section class="section-padding bg-white">
+    <div class="mx-auto max-w-[1440px]">
+      <div class="text-center mb-12 reveal">
+        <span class="label-tag mb-4 inline-flex mx-auto">En Acción</span>
+        <h2 class="heading-md text-rdn-charcoal">ReCreo en <span class="text-rdn-green">ferias y exposiciones</span></h2>
+      </div>
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-4 reveal">
+        <div class="rounded-2xl overflow-hidden shadow-lg lg:col-span-2 lg:row-span-2">
+          <img src="/images/expo-booth-recreo.jpg" alt="Stand de ReCreo en exposición con productos reciclados" class="w-full h-full object-cover hover:scale-105 transition-transform duration-700" loading="lazy" />
+        </div>
+        <div class="rounded-2xl overflow-hidden shadow-lg">
+          <img src="/images/expo-products.jpg" alt="Productos ReCreo exhibidos en feria" class="w-full h-52 object-cover hover:scale-105 transition-transform duration-700" loading="lazy" />
+        </div>
+        <div class="rounded-2xl overflow-hidden shadow-lg">
+          <img src="/images/team-expo-group.jpg" alt="Equipo RDN en exposición" class="w-full h-52 object-cover hover:scale-105 transition-transform duration-700" loading="lazy" />
+        </div>
+        <div class="rounded-2xl overflow-hidden shadow-lg">
+          <img src="/images/team-expo-booth.jpg" alt="Stand RDN con productos de plástico reciclado" class="w-full h-52 object-cover hover:scale-105 transition-transform duration-700" loading="lazy" />
+        </div>
+        <div class="rounded-2xl overflow-hidden shadow-lg">
+          <img src="/images/expo-team-smile.jpg" alt="Equipo de ReCreo y Reciclaje del Norte" class="w-full h-52 object-cover hover:scale-105 transition-transform duration-700" loading="lazy" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Store Info + CTA -->
+  <section class="section-padding bg-rdn-blue relative overflow-hidden">
+    <div class="absolute top-0 right-0 w-96 h-96 bg-rdn-green/10 rounded-full blur-[100px]"></div>
+    <div class="mx-auto max-w-[1440px] relative">
+      <div class="grid lg:grid-cols-2 gap-12 items-center reveal">
+        <div>
+          <span class="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.2em] text-rdn-green mb-4">Visítanos</span>
+          <h2 class="heading-lg text-white mb-6">
+            ReCreo <span class="text-rdn-green">Eco Outlet</span>
+          </h2>
+          <p class="text-white/60 text-lg leading-relaxed mb-8">
+            Se realizan ventas al detal y al por mayor. Visite nuestra tienda en Hatillo para ver toda la línea de productos en persona.
+          </p>
+
+          <div class="space-y-4 mb-8">
+            <div class="flex items-start gap-4 bg-white/10 backdrop-blur-sm rounded-xl p-5 border border-white/10">
+              <svg class="w-6 h-6 text-rdn-green mt-0.5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              <div>
+                <p class="text-white font-semibold">Dirección</p>
+                <p class="text-white/60 text-sm">Carr. #2 KM 88.1, Ave. Cobia, Edif. 142, Hatillo, Puerto Rico</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-4 bg-white/10 backdrop-blur-sm rounded-xl p-5 border border-white/10">
+              <svg class="w-6 h-6 text-rdn-green mt-0.5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+              <div>
+                <p class="text-white font-semibold">Horario</p>
+                <p class="text-white/60 text-sm">Lunes a Sábado: 8:00 AM - 5:00 PM</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-4 bg-white/10 backdrop-blur-sm rounded-xl p-5 border border-white/10">
+              <svg class="w-6 h-6 text-rdn-green mt-0.5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+              <div>
+                <p class="text-white font-semibold">Teléfono</p>
+                <p class="text-white/60 text-sm"><a href="tel:787-544-4343" class="hover:text-rdn-green transition-colors">787-544-4343</a></p>
+              </div>
+            </div>
+          </div>
+
+          <div class="flex flex-wrap gap-4">
+            <a href="tel:787-544-4343" class="inline-flex items-center gap-2 bg-rdn-green text-white px-8 py-4 rounded-full font-semibold text-sm uppercase tracking-wider transition-all duration-300 hover:bg-rdn-green-light hover:shadow-lg hover:-translate-y-0.5">
+              Llamar Ahora
+              <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+            </a>
+            <a href="/contacto" class="btn-outline border-white/30 text-white hover:bg-white hover:text-rdn-blue">
+              Solicitar Cotización
+            </a>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-2 gap-4">
+          <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-8 text-center border border-white/10">
+            <p class="text-4xl font-bold text-rdn-green">100%</p>
+            <p class="text-xs text-white/50 mt-2">Plástico reciclado</p>
+          </div>
+          <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-8 text-center border border-white/10">
+            <p class="text-4xl font-bold text-rdn-green">PR</p>
+            <p class="text-xs text-white/50 mt-2">Hecho en Puerto Rico</p>
+          </div>
+          <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-8 text-center border border-white/10">
+            <p class="text-4xl font-bold text-rdn-green">6+</p>
+            <p class="text-xs text-white/50 mt-2">Líneas de productos</p>
+          </div>
+          <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-8 text-center border border-white/10">
+            <p class="text-4xl font-bold text-rdn-green">0</p>
+            <p class="text-xs text-white/50 mt-2">Mantenimiento</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</Layout>

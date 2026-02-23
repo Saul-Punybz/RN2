@@ -1,0 +1,778 @@
+---
+import Layout from '../layouts/Layout.astro'
+
+const years = {
+  '2023': {
+    materials: 27362,
+    trees: 226736,
+    water: 1051034149,
+    energy: 157078719,
+    co2: 79074,
+    trucks: 3908,
+  },
+  '2022': {
+    materials: 34877,
+    trees: 223282,
+    water: 1115169966,
+    energy: 224784207,
+    co2: 100795,
+    trucks: 1724,
+  },
+}
+
+const materialBreakdown = [
+  { name: 'Cartón', pct: 34, tons: 9303, icon: '📦', color: '#0D503C', bgClass: 'bg-rdn-green' },
+  { name: 'Papel', pct: 22, tons: 6020, icon: '📄', color: '#14785A', bgClass: 'bg-rdn-green-light' },
+  { name: 'Plástico', pct: 18, tons: 4925, icon: '♻️', color: '#A3E635', bgClass: 'bg-rdn-lime' },
+  { name: 'Vidrio', pct: 12, tons: 3283, icon: '🫙', color: '#22C55E', bgClass: 'bg-emerald-500' },
+  { name: 'Metal', pct: 8, tons: 2189, icon: '🔩', color: '#6B7280', bgClass: 'bg-gray-500' },
+  { name: 'Electrónico', pct: 6, tons: 1642, icon: '💻', color: '#8B5CF6', bgClass: 'bg-violet-500' },
+]
+
+const months = ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic']
+const monthlyTons2023 = [1980, 2120, 2340, 2180, 2450, 2560, 2380, 2290, 2410, 2680, 2150, 1823]
+const monthlyTons2022 = [2650, 2890, 3100, 2940, 3210, 3050, 2870, 2780, 2920, 3180, 2750, 2537]
+const maxMonthly = Math.max(...monthlyTons2023, ...monthlyTons2022)
+
+// Quarterly data for secondary chart
+const quarters = [
+  { label: 'Q1', tons2023: 6440, tons2022: 8640 },
+  { label: 'Q2', tons2023: 7190, tons2022: 9200 },
+  { label: 'Q3', tons2023: 7080, tons2022: 8570 },
+  { label: 'Q4', tons2023: 6653, tons2022: 8467 },
+]
+const maxQuarterly = Math.max(...quarters.map(q => Math.max(q.tons2023, q.tons2022)))
+
+// Milestones / recent activity
+const milestones = [
+  { date: 'Dic 2023', description: 'Récord mensual en camiones desviados', value: '412', type: 'record', icon: 'truck' },
+  { date: 'Oct 2023', description: 'Mayor volumen de reciclaje del año', value: '2,680t', type: 'peak', icon: 'chart' },
+  { date: 'Sep 2023', description: 'Certificación NAID renovada', value: 'AAA', type: 'cert', icon: 'shield' },
+  { date: 'Jun 2023', description: 'Segundo mayor mes en procesamiento', value: '2,560t', type: 'peak', icon: 'chart' },
+  { date: 'Mar 2023', description: 'Nuevo programa municipal iniciado', value: '+3', type: 'new', icon: 'leaf' },
+  { date: 'Ene 2023', description: 'Inicio de operaciones ampliadas', value: '4 plantas', type: 'new', icon: 'building' },
+]
+---
+
+<Layout title="Dashboard | Reciclaje del Norte" description="Dashboard de impacto ambiental. Estadísticas de reciclaje, conservación y sostenibilidad de Reciclaje del Norte en Puerto Rico.">
+
+  <!-- Dashboard Header -->
+  <section class="bg-rdn-green-dark pt-28 pb-6 relative overflow-hidden">
+    <div class="absolute top-0 right-0 w-[500px] h-[500px] bg-rdn-lime/5 rounded-full blur-[140px]"></div>
+    <div class="absolute bottom-0 left-0 w-[300px] h-[300px] bg-rdn-green-light/10 rounded-full blur-[100px]"></div>
+    <div class="relative mx-auto max-w-[1440px] px-6 md:px-12 lg:px-20">
+      <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+        <div>
+          <span class="label-tag mb-4 inline-flex animate-fade-up">
+            <span class="w-2 h-2 bg-rdn-lime rounded-full animate-pulse"></span>
+            En Vivo
+          </span>
+          <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold text-white animate-fade-up stagger-1">
+            Dashboard de <span class="text-rdn-lime">Impacto</span>
+          </h1>
+          <p class="text-white/50 text-sm mt-2 animate-fade-up stagger-2">Reporte Global — Reciclaje del Norte, Puerto Rico</p>
+        </div>
+        <div class="flex items-center gap-3 animate-fade-up stagger-2">
+          <button data-year="2023" class="year-btn active">2023</button>
+          <button data-year="2022" class="year-btn">2022</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Dashboard Grid -->
+  <section class="bg-[#F0EDE6] min-h-screen">
+    <div class="mx-auto max-w-[1440px] px-6 md:px-12 lg:px-20 py-8">
+
+      <!-- Top Summary Card -->
+      <div class="dash-card dash-card-accent p-6 md:p-8 mb-6 reveal">
+        <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6">
+          <div>
+            <p class="text-white/60 text-sm font-medium uppercase tracking-wider mb-1">Impacto Total del Año</p>
+            <p class="text-4xl md:text-5xl lg:text-6xl font-bold text-white tabular-nums kpi-hero" data-val2023="27362" data-val2022="34877">27,362</p>
+            <p class="text-rdn-lime/80 text-base mt-1">Toneladas de materiales reciclables desviados de vertederos</p>
+          </div>
+          <div class="flex flex-wrap gap-4 lg:gap-6">
+            <div class="bg-white/10 backdrop-blur-sm rounded-2xl px-6 py-4 border border-white/10 min-w-[140px]">
+              <p class="text-white/50 text-xs font-medium uppercase tracking-wider">Experiencia</p>
+              <p class="text-2xl font-bold text-white mt-1">27+</p>
+              <p class="text-white/40 text-xs">Años</p>
+            </div>
+            <div class="bg-white/10 backdrop-blur-sm rounded-2xl px-6 py-4 border border-white/10 min-w-[140px]">
+              <p class="text-white/50 text-xs font-medium uppercase tracking-wider">Equipo</p>
+              <p class="text-2xl font-bold text-white mt-1">200+</p>
+              <p class="text-white/40 text-xs">Empleados</p>
+            </div>
+            <div class="bg-white/10 backdrop-blur-sm rounded-2xl px-6 py-4 border border-white/10 min-w-[140px]">
+              <p class="text-white/50 text-xs font-medium uppercase tracking-wider">Plantas</p>
+              <p class="text-2xl font-bold text-white mt-1">4</p>
+              <p class="text-white/40 text-xs">Facilidades</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- KPI Cards Row -->
+      <div class="grid grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 mb-6">
+
+        <!-- Materials -->
+        <div class="dash-card p-5 md:p-6 group reveal">
+          <div class="flex items-start justify-between mb-4">
+            <div class="dash-icon bg-rdn-green/10">
+              <svg class="w-5 h-5 text-rdn-green" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 19H4.815a1.83 1.83 0 0 1-1.57-.881 1.785 1.785 0 0 1-.004-1.784L7.196 9.5"/><path d="M11 19h8.203a1.83 1.83 0 0 0 1.556-.89 1.784 1.784 0 0 0 0-1.775l-1.226-2.12"/><path d="m14 16-3 3 3 3"/><path d="M8.293 13.596 4.875 7.97l1.227-2.122a1.83 1.83 0 0 1 1.582-.886h5.316"/></svg>
+            </div>
+            <span class="kpi-badge" data-change2023="-21.5" data-change2022="0"></span>
+          </div>
+          <p class="kpi-value text-2xl md:text-3xl font-bold text-rdn-charcoal tabular-nums" data-val2023="27362" data-val2022="34877" data-suffix="">0</p>
+          <p class="text-xs text-rdn-gray mt-1">Toneladas recicladas</p>
+          <div class="mt-4 h-1.5 bg-rdn-sand rounded-full overflow-hidden">
+            <div class="kpi-bar h-full bg-rdn-green rounded-full" style="width: 0%;" data-target="78"></div>
+          </div>
+        </div>
+
+        <!-- Trees -->
+        <div class="dash-card p-5 md:p-6 group reveal">
+          <div class="flex items-start justify-between mb-4">
+            <div class="dash-icon bg-emerald-500/10">
+              <svg class="w-5 h-5 text-emerald-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22V8"/><path d="M5 12H2a10 10 0 0020 0h-3"/><path d="m8 9 4-7 4 7"/><path d="M6 14l6-5 6 5"/></svg>
+            </div>
+            <span class="kpi-badge" data-change2023="+1.5" data-change2022="0"></span>
+          </div>
+          <p class="kpi-value text-2xl md:text-3xl font-bold text-rdn-charcoal tabular-nums" data-val2023="226736" data-val2022="223282" data-suffix="">0</p>
+          <p class="text-xs text-rdn-gray mt-1">Árboles preservados</p>
+          <div class="mt-4 h-1.5 bg-rdn-sand rounded-full overflow-hidden">
+            <div class="kpi-bar h-full bg-emerald-500 rounded-full" style="width: 0%;" data-target="92"></div>
+          </div>
+        </div>
+
+        <!-- Water -->
+        <div class="dash-card p-5 md:p-6 group reveal">
+          <div class="flex items-start justify-between mb-4">
+            <div class="dash-icon bg-sky-500/10">
+              <svg class="w-5 h-5 text-sky-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2.69l5.66 5.66a8 8 0 11-11.31 0z"/></svg>
+            </div>
+            <span class="kpi-badge" data-change2023="-5.8" data-change2022="0"></span>
+          </div>
+          <p class="kpi-value text-2xl md:text-3xl font-bold text-rdn-charcoal tabular-nums" data-val2023="1051034149" data-val2022="1115169966" data-suffix="">0</p>
+          <p class="text-xs text-rdn-gray mt-1">Galones de agua conservados</p>
+          <div class="mt-4 h-1.5 bg-rdn-sand rounded-full overflow-hidden">
+            <div class="kpi-bar h-full bg-sky-500 rounded-full" style="width: 0%;" data-target="85"></div>
+          </div>
+        </div>
+
+        <!-- Energy -->
+        <div class="dash-card p-5 md:p-6 group reveal">
+          <div class="flex items-start justify-between mb-4">
+            <div class="dash-icon bg-amber-500/10">
+              <svg class="w-5 h-5 text-amber-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+            </div>
+            <span class="kpi-badge" data-change2023="-30.1" data-change2022="0"></span>
+          </div>
+          <p class="kpi-value text-2xl md:text-3xl font-bold text-rdn-charcoal tabular-nums" data-val2023="157078719" data-val2022="224784207" data-suffix="">0</p>
+          <p class="text-xs text-rdn-gray mt-1">KW/Hora de energía ahorrada</p>
+          <div class="mt-4 h-1.5 bg-rdn-sand rounded-full overflow-hidden">
+            <div class="kpi-bar h-full bg-amber-500 rounded-full" style="width: 0%;" data-target="70"></div>
+          </div>
+        </div>
+
+        <!-- CO2 -->
+        <div class="dash-card p-5 md:p-6 group reveal">
+          <div class="flex items-start justify-between mb-4">
+            <div class="dash-icon bg-violet-500/10">
+              <svg class="w-5 h-5 text-violet-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17.5 19H9a7 7 0 110-14h.5"/><path d="M22 10a5 5 0 00-9.8-1.4"/><path d="M18 15a3 3 0 100-6"/></svg>
+            </div>
+            <span class="kpi-badge" data-change2023="-21.5" data-change2022="0"></span>
+          </div>
+          <p class="kpi-value text-2xl md:text-3xl font-bold text-rdn-charcoal tabular-nums" data-val2023="79074" data-val2022="100795" data-suffix="">0</p>
+          <p class="text-xs text-rdn-gray mt-1">Toneladas métricas CO₂ evitadas</p>
+          <div class="mt-4 h-1.5 bg-rdn-sand rounded-full overflow-hidden">
+            <div class="kpi-bar h-full bg-violet-500 rounded-full" style="width: 0%;" data-target="72"></div>
+          </div>
+        </div>
+
+        <!-- Trucks -->
+        <div class="dash-card p-5 md:p-6 group reveal">
+          <div class="flex items-start justify-between mb-4">
+            <div class="dash-icon bg-rose-500/10">
+              <svg class="w-5 h-5 text-rose-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 3h15v13H1z"/><path d="M16 8h4l3 4v5h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+            </div>
+            <span class="kpi-badge" data-change2023="+126.7" data-change2022="0"></span>
+          </div>
+          <p class="kpi-value text-2xl md:text-3xl font-bold text-rdn-charcoal tabular-nums" data-val2023="3908" data-val2022="1724" data-suffix="">0</p>
+          <p class="text-xs text-rdn-gray mt-1">Camiones desviados de vertederos</p>
+          <div class="mt-4 h-1.5 bg-rdn-sand rounded-full overflow-hidden">
+            <div class="kpi-bar h-full bg-rose-500 rounded-full" style="width: 0%;" data-target="95"></div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Charts Row: Bar Chart + Donut -->
+      <div class="grid lg:grid-cols-5 gap-6 mb-6">
+
+        <!-- Monthly Bar Chart -->
+        <div class="lg:col-span-3 dash-card p-6 md:p-8 reveal">
+          <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-6 gap-3">
+            <div>
+              <h3 class="text-base font-bold text-rdn-charcoal">Toneladas Recicladas por Mes</h3>
+              <p class="text-xs text-rdn-gray mt-0.5">Tendencia mensual — <span class="year-label">2023</span></p>
+            </div>
+            <div class="flex items-center gap-4 text-xs text-rdn-gray">
+              <span class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 bg-rdn-green rounded-sm"></span> <span class="year-label">2023</span></span>
+              <span class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 bg-rdn-green/20 rounded-sm"></span> <span class="year-compare-label">2022</span></span>
+            </div>
+          </div>
+          <div class="chart-area flex items-end gap-1 md:gap-2 h-52 md:h-64" id="barChart">
+            {months.map((month, i) => (
+              <div class="flex-1 flex flex-col items-center gap-0">
+                <div class="w-full flex items-end justify-center gap-[2px] h-full">
+                  <!-- 2022 bar (background) -->
+                  <div
+                    class="bar-bg w-[45%] bg-rdn-green/10 rounded-t-sm transition-all duration-500"
+                    style={`height: ${(monthlyTons2022[i] / maxMonthly) * 100}%;`}
+                    data-val2022={monthlyTons2022[i]}
+                    data-val2023={monthlyTons2023[i]}
+                    data-is-bg="true"
+                  ></div>
+                  <!-- 2023 bar (primary) -->
+                  <div class="w-[45%] relative group/bar">
+                    <div
+                      class="bar-fg w-full bg-gradient-to-t from-rdn-green to-rdn-green-light rounded-t-sm hover:from-rdn-lime hover:to-rdn-lime-light transition-all duration-300 cursor-pointer"
+                      style={`height: ${(monthlyTons2023[i] / maxMonthly) * 100}%;`}
+                      data-val2023={monthlyTons2023[i]}
+                      data-val2022={monthlyTons2022[i]}
+                    >
+                      <div class="absolute -top-9 left-1/2 -translate-x-1/2 bg-rdn-charcoal text-white text-[10px] font-semibold px-2 py-1 rounded-md opacity-0 group-hover/bar:opacity-100 transition-opacity whitespace-nowrap pointer-events-none z-10">
+                        {monthlyTons2023[i].toLocaleString()}t
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <span class="text-[10px] md:text-xs text-rdn-gray mt-2">{month}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <!-- Material Donut + Legend -->
+        <div class="lg:col-span-2 dash-card p-6 md:p-8 reveal">
+          <div class="flex items-center justify-between mb-6">
+            <div>
+              <h3 class="text-base font-bold text-rdn-charcoal">Desglose por Material</h3>
+              <p class="text-xs text-rdn-gray mt-0.5">Distribución <span class="year-label">2023</span></p>
+            </div>
+          </div>
+
+          <!-- Donut -->
+          <div class="relative w-44 h-44 mx-auto mb-6">
+            <svg class="w-full h-full -rotate-90 donut-svg" viewBox="0 0 120 120">
+              {(() => {
+                let offset = 0;
+                const radius = 48;
+                const circumference = 2 * Math.PI * radius;
+                return materialBreakdown.map((mat) => {
+                  const dashLength = (mat.pct / 100) * circumference;
+                  const dashOffset = offset;
+                  offset += dashLength;
+                  return (
+                    <circle
+                      cx="60" cy="60" r={radius}
+                      fill="none"
+                      stroke={mat.color}
+                      stroke-width="18"
+                      stroke-dasharray={`${dashLength} ${circumference - dashLength}`}
+                      stroke-dashoffset={-dashOffset}
+                      class="donut-segment transition-all duration-700 hover:opacity-80 cursor-pointer"
+                      stroke-linecap="butt"
+                    />
+                  );
+                });
+              })()}
+            </svg>
+            <div class="absolute inset-0 flex flex-col items-center justify-center">
+              <p class="text-2xl font-bold text-rdn-charcoal">27.4K</p>
+              <p class="text-[10px] text-rdn-gray">Toneladas</p>
+            </div>
+          </div>
+
+          <!-- Legend as list (like transaction list) -->
+          <div class="space-y-2.5">
+            {materialBreakdown.map(mat => (
+              <div class="flex items-center justify-between py-1.5 px-3 rounded-xl hover:bg-rdn-sand/60 transition-colors cursor-pointer group">
+                <div class="flex items-center gap-3">
+                  <span class="w-3 h-3 rounded-full shrink-0" style={`background-color: ${mat.color}`}></span>
+                  <span class="text-sm text-rdn-charcoal font-medium group-hover:text-rdn-green transition-colors">{mat.name}</span>
+                </div>
+                <div class="flex items-center gap-3">
+                  <span class="text-xs text-rdn-gray">{mat.tons.toLocaleString()}t</span>
+                  <span class="text-sm font-bold text-rdn-charcoal min-w-[36px] text-right">{mat.pct}%</span>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      <!-- Second Row: Activity Feed + Quarterly + Equivalencies -->
+      <div class="grid lg:grid-cols-3 gap-6 mb-6">
+
+        <!-- Activity / Milestones (like "Latest Transactions") -->
+        <div class="lg:col-span-1 dash-card p-6 md:p-8 reveal">
+          <div class="flex items-center justify-between mb-6">
+            <h3 class="text-base font-bold text-rdn-charcoal">Actividad Reciente</h3>
+            <span class="text-xs text-rdn-gray font-medium"><span class="year-label">2023</span></span>
+          </div>
+          <div class="space-y-0">
+            {milestones.map((m, i) => (
+              <div class={`flex items-start gap-4 py-3.5 ${i < milestones.length - 1 ? 'border-b border-rdn-sand-dark/60' : ''}`}>
+                <div class={`w-9 h-9 rounded-xl flex items-center justify-center shrink-0 ${
+                  m.type === 'record' ? 'bg-rose-50 text-rose-600' :
+                  m.type === 'peak' ? 'bg-rdn-lime/20 text-rdn-green' :
+                  m.type === 'cert' ? 'bg-amber-50 text-amber-600' :
+                  'bg-sky-50 text-sky-600'
+                }`}>
+                  {m.icon === 'truck' && <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 3h15v13H1z"/><path d="M16 8h4l3 4v5h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>}
+                  {m.icon === 'chart' && <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18"/><path d="M18.7 8l-5.1 5.2-2.8-2.7L7 14.3"/></svg>}
+                  {m.icon === 'shield' && <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>}
+                  {m.icon === 'leaf' && <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 20A7 7 0 0 1 9.8 6.9C15.5 4.9 17 3.5 19 1c1 2 2 4.5 2 8 0 5.5-4.78 11-10 11z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/></svg>}
+                  {m.icon === 'building' && <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="2" width="16" height="20" rx="2"/><path d="M9 22V12h6v10"/><path d="M8 6h.01M16 6h.01M12 6h.01M8 10h.01M16 10h.01M12 10h.01"/></svg>}
+                </div>
+                <div class="flex-1 min-w-0">
+                  <p class="text-sm text-rdn-charcoal font-medium leading-snug">{m.description}</p>
+                  <p class="text-xs text-rdn-gray mt-0.5">{m.date}</p>
+                </div>
+                <span class={`text-sm font-bold shrink-0 ${
+                  m.type === 'record' ? 'text-rose-600' :
+                  m.type === 'peak' ? 'text-rdn-green' :
+                  m.type === 'cert' ? 'text-amber-600' :
+                  'text-sky-600'
+                }`}>{m.value}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <!-- Year Comparison (like "All Expenses") -->
+        <div class="lg:col-span-2 dash-card p-6 md:p-8 reveal">
+          <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-6 gap-3">
+            <div>
+              <h3 class="text-base font-bold text-rdn-charcoal">Comparación Año a Año</h3>
+              <p class="text-xs text-rdn-gray mt-0.5">2022 vs 2023 — Impacto ambiental</p>
+            </div>
+            <div class="flex items-center gap-4 text-xs">
+              <span class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 bg-rdn-green/25 rounded-sm"></span> 2022</span>
+              <span class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 bg-rdn-green rounded-sm"></span> 2023</span>
+            </div>
+          </div>
+
+          <div class="space-y-5">
+            <!-- Materials -->
+            <div class="comparison-row">
+              <div class="flex items-center justify-between mb-2">
+                <div class="flex items-center gap-2">
+                  <span class="w-2 h-2 rounded-full bg-rdn-green"></span>
+                  <span class="text-sm font-medium text-rdn-charcoal">Materiales reciclados</span>
+                </div>
+                <div class="flex items-center gap-2 text-sm">
+                  <span class="text-rdn-gray text-xs">34,877t</span>
+                  <svg class="w-3.5 h-3.5 text-rdn-gray/40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                  <span class="font-bold text-rdn-charcoal text-xs">27,362t</span>
+                </div>
+              </div>
+              <div class="relative h-2.5 bg-rdn-sand rounded-full overflow-hidden">
+                <div class="absolute inset-y-0 left-0 bg-rdn-green/20 rounded-full" style="width: 100%"></div>
+                <div class="absolute inset-y-0 left-0 bg-rdn-green rounded-full transition-all duration-1000 comparison-bar" data-width="78.4"></div>
+              </div>
+            </div>
+
+            <!-- Trees -->
+            <div class="comparison-row">
+              <div class="flex items-center justify-between mb-2">
+                <div class="flex items-center gap-2">
+                  <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+                  <span class="text-sm font-medium text-rdn-charcoal">Árboles preservados</span>
+                </div>
+                <div class="flex items-center gap-2 text-sm">
+                  <span class="text-rdn-gray text-xs">223,282</span>
+                  <svg class="w-3.5 h-3.5 text-rdn-gray/40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                  <span class="font-bold text-rdn-charcoal text-xs">226,736</span>
+                  <span class="text-[10px] text-emerald-600 font-bold bg-emerald-50 px-1.5 py-0.5 rounded-full">+1.5%</span>
+                </div>
+              </div>
+              <div class="relative h-2.5 bg-rdn-sand rounded-full overflow-hidden">
+                <div class="absolute inset-y-0 left-0 bg-emerald-400/20 rounded-full" style="width: 98.5%"></div>
+                <div class="absolute inset-y-0 left-0 bg-emerald-500 rounded-full transition-all duration-1000 comparison-bar" data-width="100"></div>
+              </div>
+            </div>
+
+            <!-- Water -->
+            <div class="comparison-row">
+              <div class="flex items-center justify-between mb-2">
+                <div class="flex items-center gap-2">
+                  <span class="w-2 h-2 rounded-full bg-sky-500"></span>
+                  <span class="text-sm font-medium text-rdn-charcoal">Agua conservada</span>
+                </div>
+                <div class="flex items-center gap-2 text-sm">
+                  <span class="text-rdn-gray text-xs">1.12B gal</span>
+                  <svg class="w-3.5 h-3.5 text-rdn-gray/40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                  <span class="font-bold text-rdn-charcoal text-xs">1.05B gal</span>
+                </div>
+              </div>
+              <div class="relative h-2.5 bg-rdn-sand rounded-full overflow-hidden">
+                <div class="absolute inset-y-0 left-0 bg-sky-400/20 rounded-full" style="width: 100%"></div>
+                <div class="absolute inset-y-0 left-0 bg-sky-500 rounded-full transition-all duration-1000 comparison-bar" data-width="94.2"></div>
+              </div>
+            </div>
+
+            <!-- Energy -->
+            <div class="comparison-row">
+              <div class="flex items-center justify-between mb-2">
+                <div class="flex items-center gap-2">
+                  <span class="w-2 h-2 rounded-full bg-amber-500"></span>
+                  <span class="text-sm font-medium text-rdn-charcoal">Energía ahorrada</span>
+                </div>
+                <div class="flex items-center gap-2 text-sm">
+                  <span class="text-rdn-gray text-xs">224.8M KW/h</span>
+                  <svg class="w-3.5 h-3.5 text-rdn-gray/40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                  <span class="font-bold text-rdn-charcoal text-xs">157.1M KW/h</span>
+                </div>
+              </div>
+              <div class="relative h-2.5 bg-rdn-sand rounded-full overflow-hidden">
+                <div class="absolute inset-y-0 left-0 bg-amber-400/20 rounded-full" style="width: 100%"></div>
+                <div class="absolute inset-y-0 left-0 bg-amber-500 rounded-full transition-all duration-1000 comparison-bar" data-width="69.9"></div>
+              </div>
+            </div>
+
+            <!-- CO2 -->
+            <div class="comparison-row">
+              <div class="flex items-center justify-between mb-2">
+                <div class="flex items-center gap-2">
+                  <span class="w-2 h-2 rounded-full bg-violet-500"></span>
+                  <span class="text-sm font-medium text-rdn-charcoal">CO₂ evitado</span>
+                </div>
+                <div class="flex items-center gap-2 text-sm">
+                  <span class="text-rdn-gray text-xs">100,795t</span>
+                  <svg class="w-3.5 h-3.5 text-rdn-gray/40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                  <span class="font-bold text-rdn-charcoal text-xs">79,074t</span>
+                </div>
+              </div>
+              <div class="relative h-2.5 bg-rdn-sand rounded-full overflow-hidden">
+                <div class="absolute inset-y-0 left-0 bg-violet-400/20 rounded-full" style="width: 100%"></div>
+                <div class="absolute inset-y-0 left-0 bg-violet-500 rounded-full transition-all duration-1000 comparison-bar" data-width="78.5"></div>
+              </div>
+            </div>
+
+            <!-- Trucks -->
+            <div class="comparison-row">
+              <div class="flex items-center justify-between mb-2">
+                <div class="flex items-center gap-2">
+                  <span class="w-2 h-2 rounded-full bg-rose-500"></span>
+                  <span class="text-sm font-medium text-rdn-charcoal">Camiones desviados</span>
+                </div>
+                <div class="flex items-center gap-2 text-sm">
+                  <span class="text-rdn-gray text-xs">1,724</span>
+                  <svg class="w-3.5 h-3.5 text-rdn-gray/40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                  <span class="font-bold text-rdn-charcoal text-xs">3,908</span>
+                  <span class="text-[10px] text-emerald-600 font-bold bg-emerald-50 px-1.5 py-0.5 rounded-full">+126.7%</span>
+                </div>
+              </div>
+              <div class="relative h-2.5 bg-rdn-sand rounded-full overflow-hidden">
+                <div class="absolute inset-y-0 left-0 bg-rose-400/20 rounded-full" style="width: 44.1%"></div>
+                <div class="absolute inset-y-0 left-0 bg-rose-500 rounded-full transition-all duration-1000 comparison-bar" data-width="100"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Equivalencies Row -->
+      <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-6 reveal">
+        <div class="dash-card p-5 text-center border-t-4 border-t-emerald-500">
+          <div class="w-12 h-12 bg-emerald-50 rounded-2xl flex items-center justify-center mx-auto mb-3">
+            <svg class="w-6 h-6 text-emerald-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22V8"/><path d="M5 12H2a10 10 0 0020 0h-3"/><path d="m8 9 4-7 4 7"/><path d="M6 14l6-5 6 5"/></svg>
+          </div>
+          <p class="text-2xl md:text-3xl font-bold text-emerald-700 mb-1">3,780</p>
+          <p class="text-xs text-rdn-gray leading-relaxed">Hectáreas de bosque tropical reforestadas</p>
+        </div>
+
+        <div class="dash-card p-5 text-center border-t-4 border-t-sky-500">
+          <div class="w-12 h-12 bg-sky-50 rounded-2xl flex items-center justify-center mx-auto mb-3">
+            <svg class="w-6 h-6 text-sky-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2.69l5.66 5.66a8 8 0 11-11.31 0z"/></svg>
+          </div>
+          <p class="text-2xl md:text-3xl font-bold text-sky-700 mb-1">32,000</p>
+          <p class="text-xs text-rdn-gray leading-relaxed">Hogares abastecidos de agua por un año</p>
+        </div>
+
+        <div class="dash-card p-5 text-center border-t-4 border-t-amber-500">
+          <div class="w-12 h-12 bg-amber-50 rounded-2xl flex items-center justify-center mx-auto mb-3">
+            <svg class="w-6 h-6 text-amber-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+          </div>
+          <p class="text-2xl md:text-3xl font-bold text-amber-700 mb-1">14,280</p>
+          <p class="text-xs text-rdn-gray leading-relaxed">Hogares con electricidad por un año</p>
+        </div>
+
+        <div class="dash-card p-5 text-center border-t-4 border-t-violet-500">
+          <div class="w-12 h-12 bg-violet-50 rounded-2xl flex items-center justify-center mx-auto mb-3">
+            <svg class="w-6 h-6 text-violet-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17.5 19H9a7 7 0 110-14h.5"/><path d="M22 10a5 5 0 00-9.8-1.4"/><path d="M18 15a3 3 0 100-6"/></svg>
+          </div>
+          <p class="text-2xl md:text-3xl font-bold text-violet-700 mb-1">17,200</p>
+          <p class="text-xs text-rdn-gray leading-relaxed">Autos retirados de las carreteras</p>
+        </div>
+      </div>
+
+      <!-- CTA Card -->
+      <div class="dash-card dash-card-accent p-6 md:p-10 reveal">
+        <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6">
+          <div>
+            <span class="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.2em] text-rdn-lime/80 mb-3">Transparencia</span>
+            <h2 class="text-2xl md:text-3xl font-bold text-white mb-2">Comprometidos con la rendición de cuentas</h2>
+            <p class="text-white/50 text-sm max-w-xl">Como cooperativa, creemos en la transparencia total. Nuestros reportes anuales documentan el impacto real de nuestras operaciones en Puerto Rico.</p>
+          </div>
+          <div class="flex flex-wrap gap-3 shrink-0">
+            <a href="/contacto" class="btn-lime text-xs !px-6 !py-3">
+              Solicitar Reporte
+              <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+            </a>
+            <a href="/contacto" class="inline-flex items-center gap-2 border-2 border-white/20 text-white px-6 py-3 rounded-full font-semibold text-xs uppercase tracking-wider transition-all duration-300 hover:bg-white hover:text-rdn-green">
+              Contactar
+            </a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+</Layout>
+
+<style>
+  /* Dashboard card base */
+  .dash-card {
+    background: white;
+    border-radius: 1.25rem;
+    border: 1px solid #E8E0D0;
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+
+  .dash-card:hover {
+    box-shadow: 0 8px 30px rgba(13, 80, 60, 0.06);
+    border-color: #D9F99D;
+  }
+
+  .dash-card-accent {
+    background: linear-gradient(135deg, #0D503C 0%, #072E23 100%);
+    border-color: transparent;
+  }
+
+  .dash-card-accent:hover {
+    box-shadow: 0 8px 30px rgba(13, 80, 60, 0.2);
+    border-color: transparent;
+  }
+
+  .dash-icon {
+    width: 2.75rem;
+    height: 2.75rem;
+    border-radius: 0.875rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s ease;
+  }
+
+  .group:hover .dash-icon {
+    transform: scale(1.1);
+  }
+
+  /* Year buttons */
+  .year-btn {
+    padding: 0.5rem 1.5rem;
+    border-radius: 9999px;
+    font-size: 0.8125rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: rgba(255, 255, 255, 0.6);
+    border: 1px solid transparent;
+  }
+
+  .year-btn.active {
+    background-color: #A3E635;
+    color: #072E23;
+    border-color: #A3E635;
+  }
+
+  .year-btn:hover:not(.active) {
+    background-color: rgba(255, 255, 255, 0.2);
+    color: white;
+  }
+
+  /* KPI badges */
+  .kpi-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    font-size: 0.6875rem;
+    font-weight: 700;
+    padding: 0.25rem 0.625rem;
+    border-radius: 9999px;
+    transition: all 0.3s ease;
+  }
+
+  .kpi-badge.positive {
+    background-color: rgba(16, 185, 129, 0.1);
+    color: #059669;
+  }
+
+  .kpi-badge.negative {
+    background-color: rgba(107, 114, 128, 0.1);
+    color: #6B7280;
+  }
+
+  .kpi-badge.hidden {
+    display: none;
+  }
+
+  /* Bar chart animations */
+  .bar-fg, .bar-bg {
+    animation: barGrow 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+    transform-origin: bottom;
+  }
+
+  @keyframes barGrow {
+    from { transform: scaleY(0); }
+    to { transform: scaleY(1); }
+  }
+
+  /* Comparison bar animation */
+  .comparison-bar {
+    width: 0%;
+  }
+
+  .comparison-bar.animate {
+    transition: width 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+
+  /* KPI progress bar animation */
+  .kpi-bar.animate {
+    transition: width 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+
+  /* Donut animation */
+  .donut-segment {
+    stroke-dashoffset: 0;
+  }
+</style>
+
+<script>
+  // ===== Year toggle =====
+  const yearBtns = document.querySelectorAll('.year-btn');
+  const kpiValues = document.querySelectorAll('.kpi-value');
+  const kpiBadges = document.querySelectorAll('.kpi-badge');
+  const yearLabels = document.querySelectorAll('.year-label');
+  const yearCompareLabels = document.querySelectorAll('.year-compare-label');
+  const heroValue = document.querySelector('.kpi-hero') as HTMLElement;
+
+  function formatNumber(n: number): string {
+    if (n >= 1_000_000_000) return (n / 1_000_000_000).toFixed(2).replace(/\.?0+$/, '') + 'B';
+    if (n >= 1_000_000) return (n / 1_000_000).toFixed(1).replace(/\.0$/, '') + 'M';
+    return n.toLocaleString();
+  }
+
+  function animateValue(el: HTMLElement, target: number, suffix: string) {
+    const duration = 1800;
+    const start = performance.now();
+
+    function tick(now: number) {
+      const elapsed = now - start;
+      const progress = Math.min(elapsed / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 3);
+      const current = Math.round(target * eased);
+      el.textContent = formatNumber(current) + suffix;
+      if (progress < 1) requestAnimationFrame(tick);
+    }
+    requestAnimationFrame(tick);
+  }
+
+  function switchYear(year: string) {
+    const otherYear = year === '2023' ? '2022' : '2023';
+
+    yearBtns.forEach(btn => {
+      btn.classList.toggle('active', (btn as HTMLElement).dataset.year === year);
+    });
+
+    yearLabels.forEach(el => { el.textContent = year; });
+    yearCompareLabels.forEach(el => { el.textContent = otherYear; });
+
+    // Hero value
+    if (heroValue) {
+      const target = parseInt(heroValue.dataset[`val${year}` as keyof typeof heroValue.dataset] || '0');
+      animateValue(heroValue, target, '');
+    }
+
+    // KPI cards
+    kpiValues.forEach(el => {
+      const htmlEl = el as HTMLElement;
+      const target = parseInt(htmlEl.dataset[`val${year}` as keyof typeof htmlEl.dataset] || '0');
+      const suffix = htmlEl.dataset.suffix || '';
+      animateValue(htmlEl, target, suffix);
+    });
+
+    // KPI badges
+    kpiBadges.forEach(el => {
+      const htmlEl = el as HTMLElement;
+      const change = parseFloat(htmlEl.dataset[`change${year}` as keyof typeof htmlEl.dataset] || '0');
+      if (change === 0) {
+        htmlEl.className = 'kpi-badge hidden';
+        htmlEl.textContent = '';
+      } else {
+        const isPositive = change > 0;
+        htmlEl.className = `kpi-badge ${isPositive ? 'positive' : 'negative'}`;
+        htmlEl.textContent = (isPositive ? '+' : '') + change.toFixed(1) + '%';
+      }
+    });
+  }
+
+  yearBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      switchYear((btn as HTMLElement).dataset.year || '2023');
+    });
+  });
+
+  // ===== Animate comparison bars on scroll =====
+  const comparisonBars = document.querySelectorAll('.comparison-bar');
+  const comparisonObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const bar = entry.target as HTMLElement;
+        bar.classList.add('animate');
+        requestAnimationFrame(() => {
+          bar.style.width = bar.dataset.width + '%';
+        });
+        comparisonObserver.unobserve(bar);
+      }
+    });
+  }, { threshold: 0.3 });
+
+  comparisonBars.forEach(bar => comparisonObserver.observe(bar));
+
+  // ===== Animate KPI progress bars =====
+  const kpiBars = document.querySelectorAll('.kpi-bar');
+  const kpiBarObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const bar = entry.target as HTMLElement;
+        bar.classList.add('animate');
+        requestAnimationFrame(() => {
+          bar.style.width = bar.dataset.target + '%';
+        });
+        kpiBarObserver.unobserve(bar);
+      }
+    });
+  }, { threshold: 0.3 });
+
+  kpiBars.forEach(bar => kpiBarObserver.observe(bar));
+
+  // ===== Initialize =====
+  switchYear('2023');
+</script>

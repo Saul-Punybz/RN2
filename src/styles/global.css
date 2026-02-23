@@ -1,9 +1,15 @@
 @import "tailwindcss";
 
 @theme {
-  --color-rdn-green: #0D503C;
-  --color-rdn-green-light: #14785A;
-  --color-rdn-green-dark: #072E23;
+  /* RDN Brand — from logo */
+  --color-rdn-blue: #0062AD;
+  --color-rdn-blue-light: #1A7EC5;
+  --color-rdn-blue-dark: #00447F;
+  --color-rdn-green: #37B34A;
+  --color-rdn-green-light: #4CC95F;
+  --color-rdn-green-dark: #0D503C;
+  --color-rdn-red: #EC1C24;
+  --color-rdn-red-light: #F04E54;
   --color-rdn-lime: #A3E635;
   --color-rdn-lime-light: #D9F99D;
   --color-rdn-sand: #F5F0E8;
@@ -37,15 +43,19 @@
 
 @layer components {
   .btn-primary {
-    @apply inline-flex items-center gap-2 bg-rdn-green text-white px-8 py-4 rounded-full font-semibold text-sm uppercase tracking-wider transition-all duration-300 hover:bg-rdn-green-light hover:shadow-lg hover:shadow-rdn-green/20 hover:-translate-y-0.5;
+    @apply inline-flex items-center gap-2 bg-rdn-blue text-white px-8 py-4 rounded-full font-semibold text-sm uppercase tracking-wider transition-all duration-300 hover:bg-rdn-blue-light hover:shadow-lg hover:shadow-rdn-blue/20 hover:-translate-y-0.5;
   }
 
   .btn-outline {
-    @apply inline-flex items-center gap-2 border-2 border-rdn-green text-rdn-green px-8 py-4 rounded-full font-semibold text-sm uppercase tracking-wider transition-all duration-300 hover:bg-rdn-green hover:text-white hover:-translate-y-0.5;
+    @apply inline-flex items-center gap-2 border-2 border-rdn-blue text-rdn-blue px-8 py-4 rounded-full font-semibold text-sm uppercase tracking-wider transition-all duration-300 hover:bg-rdn-blue hover:text-white hover:-translate-y-0.5;
   }
 
   .btn-lime {
-    @apply inline-flex items-center gap-2 bg-rdn-lime text-rdn-green-dark px-8 py-4 rounded-full font-semibold text-sm uppercase tracking-wider transition-all duration-300 hover:bg-rdn-lime-light hover:shadow-lg hover:shadow-rdn-lime/30 hover:-translate-y-0.5;
+    @apply inline-flex items-center gap-2 bg-rdn-green text-white px-8 py-4 rounded-full font-semibold text-sm uppercase tracking-wider transition-all duration-300 hover:bg-rdn-green-light hover:shadow-lg hover:shadow-rdn-green/30 hover:-translate-y-0.5;
+  }
+
+  .btn-red {
+    @apply inline-flex items-center gap-2 bg-rdn-red text-white px-8 py-4 rounded-full font-semibold text-sm uppercase tracking-wider transition-all duration-300 hover:bg-rdn-red-light hover:shadow-lg hover:shadow-rdn-red/30 hover:-translate-y-0.5;
   }
 
   .section-padding {
@@ -65,7 +75,7 @@
   }
 
   .label-tag {
-    @apply inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.2em] text-rdn-green bg-rdn-lime/20 px-4 py-2 rounded-full;
+    @apply inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.2em] text-rdn-blue bg-rdn-blue/10 px-4 py-2 rounded-full;
   }
 
   .card-hover {
@@ -163,10 +173,10 @@
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--color-rdn-green);
+  background: var(--color-rdn-blue);
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--color-rdn-green-light);
+  background: var(--color-rdn-blue-light);
 }

@@ -2,8 +2,10 @@
 const navLinks = [
   { label: 'Servicios', href: '/servicios' },
   { label: 'Nosotros', href: '/nosotros' },
+  { label: 'Museo', href: '/nosotros#museo' },
+  { label: 'ReCreo', href: '/recreo' },
+  { label: 'Dashboard', href: '/reportes' },
   { label: 'Locaciones', href: '/locaciones' },
-  { label: 'Blog', href: '/blog' },
   { label: 'Empleos', href: '/empleos' },
 ]
 ---
@@ -12,21 +14,11 @@ const navLinks = [
   <div class="mx-auto max-w-[1440px] px-6 md:px-12 lg:px-20">
     <nav class="flex items-center justify-between h-20 md:h-24">
       <!-- Logo -->
-      <a href="/" class="relative z-10 flex items-center gap-3 group">
-        <div class="w-10 h-10 md:w-12 md:h-12 bg-rdn-green rounded-xl flex items-center justify-center transition-transform duration-300 group-hover:scale-105">
-          <svg class="w-6 h-6 md:w-7 md:h-7 text-rdn-lime" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M7 19H4.815a1.83 1.83 0 0 1-1.57-.881 1.785 1.785 0 0 1-.004-1.784L7.196 9.5" />
-            <path d="M11 19h8.203a1.83 1.83 0 0 0 1.556-.89 1.784 1.784 0 0 0 0-1.775l-1.226-2.12" />
-            <path d="m14 16-3 3 3 3" />
-            <path d="M8.293 13.596 4.875 7.97l1.227-2.122a1.83 1.83 0 0 1 1.582-.886h5.316" />
-            <path d="m9.5 5.5 2-3.5" />
-            <path d="M14.5 3.5 12 0" />
-          </svg>
-        </div>
-        <div class="hidden sm:block">
-          <span class="block text-lg font-bold leading-none header-text-color transition-colors duration-300">RDN</span>
-          <span class="block text-[10px] font-medium uppercase tracking-[0.15em] header-subtext-color transition-colors duration-300">Reciclaje del Norte</span>
-        </div>
+      <a href="/" class="relative z-10 flex items-center gap-2 group">
+        <!-- White logo for dark hero backgrounds -->
+        <img src="/images/rdn-logo.svg" alt="RDN - Reciclaje del Norte" class="h-10 md:h-12 w-auto transition-all duration-300 group-hover:scale-105 header-logo-white" />
+        <!-- Color logo for scrolled/light backgrounds -->
+        <img src="/images/rdn-logo.svg" alt="RDN - Reciclaje del Norte" class="h-10 md:h-12 w-auto transition-all duration-300 group-hover:scale-105 header-logo-color" />
       </a>
 
       <!-- Desktop nav -->
@@ -43,7 +35,7 @@ const navLinks = [
 
       <!-- CTA + Mobile toggle -->
       <div class="flex items-center gap-4">
-        <a href="/contacto" class="hidden md:inline-flex items-center gap-2 bg-rdn-lime text-rdn-green-dark px-6 py-2.5 rounded-full text-sm font-semibold transition-all duration-300 hover:bg-rdn-lime-light hover:shadow-lg hover:-translate-y-0.5">
+        <a href="/contacto" class="hidden md:inline-flex items-center gap-2 bg-rdn-blue text-white px-6 py-2.5 rounded-full text-sm font-semibold transition-all duration-300 hover:bg-rdn-blue-light hover:shadow-lg hover:-translate-y-0.5">
           Cotización
           <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
         </a>
@@ -85,23 +77,32 @@ const navLinks = [
 </header>
 
 <style>
-  /* Default (transparent over hero) */
+  /* Default (transparent over hero) — show white logo, hide color */
   .header-text-color { color: white; }
   .header-subtext-color { color: rgba(255,255,255,0.7); }
   .header-link-color { color: rgba(255,255,255,0.85); }
+  .header-logo-white {
+    display: block;
+    filter: grayscale(1) brightness(0) invert(1);
+  }
+  .header-logo-color {
+    display: none;
+  }
 
-  /* Scrolled state */
+  /* Scrolled state — show color logo, hide white */
   #site-header.scrolled {
-    background-color: rgba(255, 255, 255, 0.95);
+    background-color: rgba(255, 255, 255, 0.97);
     backdrop-filter: blur(24px);
     -webkit-backdrop-filter: blur(24px);
-    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.08);
   }
 
   #site-header.scrolled .header-text-color { color: #1A1A1A; }
   #site-header.scrolled .header-subtext-color { color: #6B7280; }
   #site-header.scrolled .header-link-color { color: #1A1A1A; }
-  #site-header.scrolled .header-link-color:hover { color: #0D503C; }
+  #site-header.scrolled .header-link-color:hover { color: #0062AD; }
+  #site-header.scrolled .header-logo-white { display: none; }
+  #site-header.scrolled .header-logo-color { display: block; }
 
   /* Mobile open state */
   #mobile-menu.open {
