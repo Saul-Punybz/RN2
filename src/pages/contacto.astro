@@ -54,32 +54,34 @@ const locations = [
             <h2 class="text-2xl font-bold text-rdn-charcoal mb-2">Solicitar Cotización</h2>
             <p class="text-rdn-gray mb-8">Complete el formulario y le responderemos en menos de 24 horas.</p>
 
-            <form class="space-y-6">
+            <form name="contacto" method="POST" data-netlify="true" netlify-honeypot="bot-field" class="space-y-6">
+              <input type="hidden" name="form-name" value="contacto" />
+              <p class="hidden"><label>No llene esto: <input name="bot-field" /></label></p>
               <div class="grid md:grid-cols-2 gap-6">
                 <div>
                   <label class="block text-sm font-medium text-rdn-charcoal mb-2">Nombre *</label>
-                  <input type="text" required class="w-full px-4 py-3 rounded-xl border border-rdn-sand-dark bg-rdn-sand/50 text-rdn-charcoal placeholder:text-rdn-gray/50 focus:outline-none focus:ring-2 focus:ring-rdn-green/20 focus:border-rdn-green transition-all" placeholder="Su nombre completo" />
+                  <input type="text" name="nombre" required class="w-full px-4 py-3 rounded-xl border border-rdn-sand-dark bg-rdn-sand/50 text-rdn-charcoal placeholder:text-rdn-gray/50 focus:outline-none focus:ring-2 focus:ring-rdn-green/20 focus:border-rdn-green transition-all" placeholder="Su nombre completo" />
                 </div>
                 <div>
                   <label class="block text-sm font-medium text-rdn-charcoal mb-2">Empresa</label>
-                  <input type="text" class="w-full px-4 py-3 rounded-xl border border-rdn-sand-dark bg-rdn-sand/50 text-rdn-charcoal placeholder:text-rdn-gray/50 focus:outline-none focus:ring-2 focus:ring-rdn-green/20 focus:border-rdn-green transition-all" placeholder="Nombre de su empresa" />
+                  <input type="text" name="empresa" class="w-full px-4 py-3 rounded-xl border border-rdn-sand-dark bg-rdn-sand/50 text-rdn-charcoal placeholder:text-rdn-gray/50 focus:outline-none focus:ring-2 focus:ring-rdn-green/20 focus:border-rdn-green transition-all" placeholder="Nombre de su empresa" />
                 </div>
               </div>
 
               <div class="grid md:grid-cols-2 gap-6">
                 <div>
                   <label class="block text-sm font-medium text-rdn-charcoal mb-2">Email *</label>
-                  <input type="email" required class="w-full px-4 py-3 rounded-xl border border-rdn-sand-dark bg-rdn-sand/50 text-rdn-charcoal placeholder:text-rdn-gray/50 focus:outline-none focus:ring-2 focus:ring-rdn-green/20 focus:border-rdn-green transition-all" placeholder="su@email.com" />
+                  <input type="email" name="email" required class="w-full px-4 py-3 rounded-xl border border-rdn-sand-dark bg-rdn-sand/50 text-rdn-charcoal placeholder:text-rdn-gray/50 focus:outline-none focus:ring-2 focus:ring-rdn-green/20 focus:border-rdn-green transition-all" placeholder="su@email.com" />
                 </div>
                 <div>
                   <label class="block text-sm font-medium text-rdn-charcoal mb-2">Teléfono *</label>
-                  <input type="tel" required class="w-full px-4 py-3 rounded-xl border border-rdn-sand-dark bg-rdn-sand/50 text-rdn-charcoal placeholder:text-rdn-gray/50 focus:outline-none focus:ring-2 focus:ring-rdn-green/20 focus:border-rdn-green transition-all" placeholder="787-000-0000" />
+                  <input type="tel" name="telefono" required class="w-full px-4 py-3 rounded-xl border border-rdn-sand-dark bg-rdn-sand/50 text-rdn-charcoal placeholder:text-rdn-gray/50 focus:outline-none focus:ring-2 focus:ring-rdn-green/20 focus:border-rdn-green transition-all" placeholder="787-000-0000" />
                 </div>
               </div>
 
               <div>
                 <label class="block text-sm font-medium text-rdn-charcoal mb-2">Servicio de interés</label>
-                <select class="w-full px-4 py-3 rounded-xl border border-rdn-sand-dark bg-rdn-sand/50 text-rdn-charcoal focus:outline-none focus:ring-2 focus:ring-rdn-green/20 focus:border-rdn-green transition-all">
+                <select name="servicio" class="w-full px-4 py-3 rounded-xl border border-rdn-sand-dark bg-rdn-sand/50 text-rdn-charcoal focus:outline-none focus:ring-2 focus:ring-rdn-green/20 focus:border-rdn-green transition-all">
                   <option value="">Seleccione un servicio</option>
                   <option value="trituracion">Trituración de Materiales</option>
                   <option value="decomiso">Decomiso de Equipos Electrónicos</option>
@@ -93,7 +95,7 @@ const locations = [
 
               <div>
                 <label class="block text-sm font-medium text-rdn-charcoal mb-2">Mensaje *</label>
-                <textarea required rows="5" class="w-full px-4 py-3 rounded-xl border border-rdn-sand-dark bg-rdn-sand/50 text-rdn-charcoal placeholder:text-rdn-gray/50 focus:outline-none focus:ring-2 focus:ring-rdn-green/20 focus:border-rdn-green transition-all resize-none" placeholder="Describa su necesidad o proyecto..."></textarea>
+                <textarea name="mensaje" required rows="5" class="w-full px-4 py-3 rounded-xl border border-rdn-sand-dark bg-rdn-sand/50 text-rdn-charcoal placeholder:text-rdn-gray/50 focus:outline-none focus:ring-2 focus:ring-rdn-green/20 focus:border-rdn-green transition-all resize-none" placeholder="Describa su necesidad o proyecto..."></textarea>
               </div>
 
               <button type="submit" class="btn-primary w-full justify-center">

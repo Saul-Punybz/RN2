@@ -1,0 +1,377 @@
+---
+import '../styles/global.css'
+import Header from '../components/Header.astro'
+import Footer from '../components/Footer.astro'
+
+const { frontmatter } = Astro.props
+const { title, description, date, author, tag, image } = frontmatter
+
+const tagColors: Record<string, string> = {
+  'Plásticos': 'bg-sky-100 text-sky-800',
+  'Materiales': 'bg-slate-100 text-slate-800',
+  'ReCreo': 'bg-rdn-lime/20 text-rdn-green-dark',
+  'Historia': 'bg-amber-100 text-amber-800',
+  'Seguridad': 'bg-red-100 text-red-800',
+  'Municipal': 'bg-blue-100 text-blue-800',
+  'Sostenibilidad': 'bg-emerald-100 text-emerald-800',
+  'Educación': 'bg-purple-100 text-purple-800',
+}
+---
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content={description} />
+  <meta name="theme-color" content="#0D503C" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <title>{title} | Blog RDN</title>
+
+  <!-- Open Graph -->
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:type" content="article" />
+  <meta property="og:image" content={`https://www.reciclajedelnorte.com${image}`} />
+  <meta property="og:locale" content="es_PR" />
+  <meta property="og:site_name" content="Reciclaje del Norte" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content={title} />
+  <meta name="twitter:description" content={description} />
+  <meta name="twitter:image" content={`https://www.reciclajedelnorte.com${image}`} />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+</head>
+<body class="bg-white">
+  <a href="#main-content" class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:bg-rdn-green focus:text-white focus:px-6 focus:py-3 focus:rounded-full focus:font-semibold focus:text-sm">
+    Saltar al contenido
+  </a>
+
+  <!-- Reading progress bar -->
+  <div id="reading-progress" class="fixed top-0 left-0 h-1 bg-gradient-to-r from-rdn-green to-rdn-lime z-[70] transition-all duration-150" style="width: 0%"></div>
+
+  <Header />
+  <main id="main-content">
+    <!-- Hero image — full bleed -->
+    {image && (
+      <section class="relative pt-28 md:pt-32">
+        <div class="mx-auto max-w-6xl px-4 md:px-8">
+          <div class="relative rounded-2xl md:rounded-3xl overflow-hidden shadow-2xl aspect-[21/9]">
+            <img src={image} alt={title} class="w-full h-full object-cover" />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent"></div>
+          </div>
+        </div>
+      </section>
+    )}
+
+    <!-- Article header -->
+    <section class="relative mx-auto max-w-3xl px-6 md:px-8 -mt-16 md:-mt-20 z-10">
+      <div class="bg-white rounded-2xl shadow-lg p-8 md:p-12">
+        <!-- Back link -->
+        <a href="/blog" class="inline-flex items-center gap-2 text-rdn-gray hover:text-rdn-green text-sm mb-6 transition-colors group">
+          <svg class="w-4 h-4 transition-transform group-hover:-translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+          Volver al Blog
+        </a>
+
+        <!-- Meta -->
+        <div class="flex flex-wrap items-center gap-3 mb-6">
+          <span class={`text-xs font-semibold px-3 py-1.5 rounded-full ${tagColors[tag] || 'bg-rdn-sand text-rdn-gray'}`}>{tag}</span>
+          <span class="text-sm text-rdn-gray">{date}</span>
+          <span class="w-1 h-1 rounded-full bg-rdn-gray/30"></span>
+          <span class="text-sm text-rdn-gray">Por <strong class="text-rdn-charcoal">{author}</strong></span>
+        </div>
+
+        <!-- Title -->
+        <h1 class="text-3xl md:text-4xl lg:text-[2.75rem] font-extrabold text-rdn-charcoal leading-tight mb-6" style="font-family: 'Playfair Display', serif;">
+          {title}
+        </h1>
+
+        <!-- Description -->
+        <p class="text-lg md:text-xl text-rdn-gray leading-relaxed border-l-4 border-rdn-green pl-5">
+          {description}
+        </p>
+      </div>
+    </section>
+
+    <!-- Article body -->
+    <article class="relative mx-auto max-w-3xl px-6 md:px-8 py-12 md:py-16">
+      <div class="blog-content px-2 sm:px-8 md:px-12">
+        <slot />
+      </div>
+
+      <!-- Divider -->
+      <div class="flex items-center gap-4 my-16 px-2 sm:px-8 md:px-12">
+        <div class="flex-1 h-px bg-rdn-sand-dark"></div>
+        <svg class="w-6 h-6 text-rdn-green" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+        <div class="flex-1 h-px bg-rdn-sand-dark"></div>
+      </div>
+
+      <!-- Author card -->
+      <div class="flex items-center gap-5 bg-rdn-sand rounded-2xl p-6 md:p-8 mx-2 sm:mx-8 md:mx-12">
+        <div class="w-14 h-14 rounded-full bg-rdn-green-dark flex items-center justify-center flex-shrink-0">
+          <span class="text-white font-bold text-lg">RDN</span>
+        </div>
+        <div>
+          <p class="font-bold text-rdn-charcoal mb-1">Reciclaje del Norte</p>
+          <p class="text-sm text-rdn-gray leading-relaxed">Cooperativa de trabajadores líder en servicios de reciclaje en Puerto Rico. 30+ años transformando residuos en recursos.</p>
+        </div>
+      </div>
+    </article>
+
+    <!-- Related / CTA -->
+    <section class="bg-rdn-green-dark py-16 md:py-20">
+      <div class="mx-auto max-w-3xl px-6 md:px-8 text-center">
+        <p class="text-rdn-lime text-xs uppercase tracking-[0.2em] font-semibold mb-4">Sigue leyendo</p>
+        <h3 class="text-2xl md:text-3xl font-bold text-white mb-4" style="font-family: 'Playfair Display', serif;">¿Te interesa saber más?</h3>
+        <p class="text-white/60 max-w-lg mx-auto mb-10">Explora más artículos sobre reciclaje, sostenibilidad y cómo RDN está transformando Puerto Rico.</p>
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+          <a href="/blog" class="btn-lime">
+            Ver todos los artículos
+            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+          <a href="/contacto" class="inline-flex items-center gap-2 border border-white/20 text-white px-6 py-3 rounded-full text-sm font-semibold hover:bg-white/10 transition-all duration-300">
+            Contáctanos
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+  <Footer />
+
+  <style is:global>
+    /* Blog article typography */
+    .blog-content {
+      font-family: 'Inter', system-ui, sans-serif;
+      font-size: 1.0625rem;
+      line-height: 1.85;
+      color: #374151;
+    }
+
+    .blog-content h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.75rem;
+      font-weight: 700;
+      color: #1A1A1A;
+      margin-top: 3rem;
+      margin-bottom: 1rem;
+      line-height: 1.3;
+    }
+
+    .blog-content h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.35rem;
+      font-weight: 600;
+      color: #1A1A1A;
+      margin-top: 2.25rem;
+      margin-bottom: 0.75rem;
+      line-height: 1.4;
+    }
+
+    .blog-content p {
+      margin-bottom: 1.5rem;
+    }
+
+    /* First paragraph — drop cap style */
+    .blog-content > p:first-of-type {
+      font-size: 1.15rem;
+      color: #1A1A1A;
+    }
+
+    .blog-content strong {
+      color: #1A1A1A;
+      font-weight: 600;
+    }
+
+    .blog-content a {
+      color: #0D503C;
+      font-weight: 600;
+      text-decoration: underline;
+      text-decoration-color: #A3E635;
+      text-underline-offset: 3px;
+      text-decoration-thickness: 2px;
+      transition: all 0.2s;
+    }
+    .blog-content a:hover {
+      color: #37B34A;
+      text-decoration-color: #37B34A;
+    }
+
+    /* Lists */
+    .blog-content ul {
+      list-style: none;
+      padding-left: 0;
+      margin: 1.5rem 0;
+    }
+    .blog-content ul li {
+      position: relative;
+      padding-left: 1.75rem;
+      margin-bottom: 0.75rem;
+    }
+    .blog-content ul li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0.65rem;
+      width: 8px;
+      height: 8px;
+      border-radius: 2px;
+      background: #37B34A;
+    }
+
+    .blog-content ol {
+      padding-left: 0;
+      margin: 1.5rem 0;
+      counter-reset: blog-counter;
+      list-style: none;
+    }
+    .blog-content ol li {
+      position: relative;
+      padding-left: 2.5rem;
+      margin-bottom: 0.75rem;
+      counter-increment: blog-counter;
+    }
+    .blog-content ol li::before {
+      content: counter(blog-counter);
+      position: absolute;
+      left: 0;
+      top: 0.1rem;
+      width: 1.75rem;
+      height: 1.75rem;
+      border-radius: 50%;
+      background: #0D503C;
+      color: white;
+      font-size: 0.8rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Blockquotes */
+    .blog-content blockquote {
+      border-left: 4px solid #37B34A;
+      background: linear-gradient(135deg, #f0fdf4, #fafaf9);
+      border-radius: 0 1rem 1rem 0;
+      padding: 1.5rem 2rem;
+      margin: 2rem 0;
+      font-size: 1.1rem;
+      font-style: normal;
+      color: #0D503C;
+      font-weight: 500;
+    }
+    .blog-content blockquote p {
+      margin-bottom: 0;
+    }
+
+    /* Tables */
+    .blog-content table {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 0;
+      margin: 2rem 0;
+      font-size: 0.9rem;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+    }
+    .blog-content thead th {
+      background: #0D503C;
+      color: white;
+      font-weight: 600;
+      text-align: left;
+      padding: 0.875rem 1rem;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .blog-content tbody td {
+      padding: 0.75rem 1rem;
+      border-bottom: 1px solid #E8E0D0;
+    }
+    .blog-content tbody tr:last-child td {
+      border-bottom: none;
+    }
+    .blog-content tbody tr:nth-child(even) {
+      background: #FAFAF9;
+    }
+    .blog-content tbody tr:hover {
+      background: #f0fdf4;
+    }
+
+    /* Horizontal rules */
+    .blog-content hr {
+      border: none;
+      height: 1px;
+      background: linear-gradient(to right, transparent, #E8E0D0, transparent);
+      margin: 3rem 0;
+    }
+
+    /* Code */
+    .blog-content code {
+      background: #F5F0E8;
+      padding: 0.15rem 0.4rem;
+      border-radius: 4px;
+      font-size: 0.9em;
+    }
+
+    @media (max-width: 768px) {
+      .blog-content h2 {
+        font-size: 1.4rem;
+        margin-top: 2.25rem;
+      }
+      .blog-content h3 {
+        font-size: 1.15rem;
+      }
+      .blog-content {
+        font-size: 1rem;
+        line-height: 1.8;
+      }
+      .blog-content blockquote {
+        padding: 1rem 1.25rem;
+        font-size: 1rem;
+      }
+      .blog-content table {
+        font-size: 0.8rem;
+      }
+      .blog-content thead th,
+      .blog-content tbody td {
+        padding: 0.5rem 0.6rem;
+      }
+    }
+  </style>
+
+  <script>
+    // Reading progress
+    const progressBar = document.getElementById('reading-progress')!
+    const article = document.querySelector('article')!
+
+    const updateProgress = () => {
+      const rect = article.getBoundingClientRect()
+      const totalHeight = article.offsetHeight
+      const viewportHeight = window.innerHeight
+      const scrolled = Math.max(0, -rect.top)
+      const progress = Math.min(100, (scrolled / (totalHeight - viewportHeight)) * 100)
+      progressBar.style.width = `${Math.max(0, progress)}%`
+    }
+
+    window.addEventListener('scroll', updateProgress, { passive: true })
+    updateProgress()
+
+    // Reveal
+    const reveals = document.querySelectorAll('.reveal')
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('visible')
+      })
+    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' })
+    reveals.forEach(el => observer.observe(el))
+  </script>
+</body>
+</html>

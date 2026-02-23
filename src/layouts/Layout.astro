@@ -21,7 +21,6 @@ const {
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content={description} />
   <meta name="theme-color" content="#0D503C" />
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
@@ -32,10 +31,61 @@ const {
   <meta property="og:description" content={description} />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://www.reciclajedelnorte.com" />
+  <meta property="og:image" content="https://www.reciclajedelnorte.com/images/rdn-30-aniversario.png" />
+  <meta property="og:locale" content="es_PR" />
+  <meta property="og:site_name" content="Reciclaje del Norte" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content={title} />
+  <meta name="twitter:description" content={description} />
+  <meta name="twitter:image" content="https://www.reciclajedelnorte.com/images/rdn-30-aniversario.png" />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+
+  <!-- Canonical -->
+  <link rel="canonical" href="https://www.reciclajedelnorte.com" />
+
+  <!-- JSON-LD Structured Data -->
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Reciclaje del Norte Inc. P.T.",
+    "alternateName": "RDN",
+    "url": "https://www.reciclajedelnorte.com",
+    "logo": "https://www.reciclajedelnorte.com/images/rdn-logo.svg",
+    "image": "https://www.reciclajedelnorte.com/images/rdn-30-aniversario.png",
+    "description": "Cooperativa líder en servicios de reciclaje, destrucción confidencial y manufactura de materiales reciclados en Puerto Rico. 30+ años de experiencia.",
+    "foundingDate": "1996",
+    "numberOfEmployees": { "@type": "QuantitativeValue", "minValue": 200 },
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Bo. Higuillar, Calle Tiara",
+      "addressLocality": "Arecibo",
+      "addressRegion": "PR",
+      "postalCode": "00612",
+      "addressCountry": "US"
+    },
+    "telephone": "+1-787-262-0305",
+    "email": "serviciosrdn@reciclajedelnorte.com",
+    "sameAs": [
+      "https://facebook.com/Reciclajedelnortept/",
+      "https://instagram.com/reciclaje_delnorteinc/",
+      "https://pr.linkedin.com/in/rdn-reciclaje-del-norte-02854941"
+    ],
+    "areaServed": { "@type": "Place", "name": "Puerto Rico" },
+    "serviceType": ["Recycling", "Document Destruction", "Electronic Waste Disposal", "Construction Materials"]
+  })} />
 </head>
 <body>
+  <a href="#main-content" class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:bg-rdn-green focus:text-white focus:px-6 focus:py-3 focus:rounded-full focus:font-semibold focus:text-sm">
+    Saltar al contenido
+  </a>
   <Header />
-  <main>
+  <main id="main-content">
     <slot />
   </main>
   <Footer />

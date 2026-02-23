@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@plugin "@tailwindcss/typography";
 
 @theme {
   /* RDN Brand — from logo */
@@ -38,6 +39,18 @@
   ::selection {
     background-color: var(--color-rdn-lime);
     color: var(--color-rdn-green-dark);
+  }
+
+  /* Focus visible for keyboard users */
+  :focus-visible {
+    outline: 2px solid var(--color-rdn-green);
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+
+  /* Remove outline for mouse users */
+  :focus:not(:focus-visible) {
+    outline: none;
   }
 }
 

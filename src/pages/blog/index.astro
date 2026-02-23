@@ -1,0 +1,183 @@
+---
+import Layout from '../../layouts/Layout.astro'
+
+const posts = [
+  {
+    title: 'Cómo se Recicla el Plástico: Del Contenedor a un Nuevo Producto',
+    slug: 'como-se-recicla-el-plastico',
+    date: '15 de enero, 2026',
+    author: 'RDN',
+    excerpt: 'El plástico que depositas en el contenedor de reciclaje pasa por un proceso fascinante antes de convertirse en un nuevo producto. En RDN procesamos miles de toneladas anuales a través de trituración, lavado, separación por densidad y peletizado.',
+    tag: 'Plásticos',
+    image: '/images/blog/plastico-reciclado.webp',
+    featured: true,
+  },
+  {
+    title: 'Reciclaje de Aluminio: El Material que se Recicla Infinitamente',
+    slug: 'reciclaje-de-aluminio',
+    date: '28 de diciembre, 2025',
+    author: 'RDN',
+    excerpt: 'El aluminio puede reciclarse infinitamente sin perder calidad. Reciclar una lata ahorra 95% de la energía necesaria para producir aluminio nuevo.',
+    tag: 'Materiales',
+    image: '/images/blog/aluminio-reciclaje.webp',
+    featured: false,
+  },
+  {
+    title: 'ReCreo: Materiales de Construcción Hechos de Plástico Reciclado',
+    slug: 'recreo-materiales-construccion',
+    date: '10 de noviembre, 2025',
+    author: 'RDN',
+    excerpt: 'Nuestra línea ReCreo transforma plástico reciclado en madera plástica, postes, tablones y mobiliario urbano. No se pudren, resisten huracanes. Ideales para Puerto Rico.',
+    tag: 'ReCreo',
+    image: '/images/blog/recreo-materiales.webp',
+    featured: false,
+  },
+  {
+    title: '30 Años de Reciclaje: La Historia de RDN en Puerto Rico',
+    slug: '30-anos-reciclaje-rdn',
+    date: '1 de octubre, 2025',
+    author: 'RDN',
+    excerpt: 'Desde 1996, lo que comenzó como una pequeña cooperativa en Arecibo se ha convertido en la empresa líder de reciclaje de Puerto Rico con tres locaciones.',
+    tag: 'Historia',
+    image: '/images/blog/aniversario-rdn.webp',
+    featured: false,
+  },
+  {
+    title: 'Destrucción Segura de Documentos y Equipos Electrónicos',
+    slug: 'destruccion-segura-documentos',
+    date: '18 de agosto, 2025',
+    author: 'RDN',
+    excerpt: 'Las empresas en Puerto Rico están obligadas a destruir información confidencial. RDN ofrece servicios certificados que cumplen con FACTA, HIPAA y Gramm-Leach-Bliley.',
+    tag: 'Seguridad',
+    image: '/images/blog/operaciones-reciclaje.webp',
+    featured: false,
+  },
+  {
+    title: 'Reciclaje Municipal: Cómo Funciona el Programa en tu Comunidad',
+    slug: 'reciclaje-municipal',
+    date: '5 de julio, 2025',
+    author: 'RDN',
+    excerpt: 'RDN opera programas de reciclaje municipal en más de 15 municipios del norte de Puerto Rico. Aprende cómo participar.',
+    tag: 'Municipal',
+    image: '/images/blog/logistica-municipal.webp',
+    featured: false,
+  },
+  {
+    title: 'Economía Circular: El Modelo que Transforma Residuos en Recursos',
+    slug: 'economia-circular',
+    date: '20 de mayo, 2025',
+    author: 'RDN',
+    excerpt: 'La economía circular busca eliminar el concepto de basura, manteniendo los materiales en uso el mayor tiempo posible.',
+    tag: 'Sostenibilidad',
+    image: '/images/blog/museo-educacion.webp',
+    featured: false,
+  },
+  {
+    title: 'Educación Ambiental: El Museo del Reciclaje en Arecibo',
+    slug: 'museo-del-reciclaje',
+    date: '3 de abril, 2025',
+    author: 'RDN',
+    excerpt: 'Un espacio educativo único donde estudiantes, familias y empresas aprenden sobre reciclaje y economía circular con exhibiciones interactivas.',
+    tag: 'Educación',
+    image: '/images/blog/educacion-reciclaje.webp',
+    featured: false,
+  },
+]
+
+const tagColors: Record<string, string> = {
+  'Plásticos': 'bg-sky-100 text-sky-800',
+  'Materiales': 'bg-slate-100 text-slate-800',
+  'ReCreo': 'bg-rdn-lime/20 text-rdn-green-dark',
+  'Historia': 'bg-amber-100 text-amber-800',
+  'Seguridad': 'bg-red-100 text-red-800',
+  'Municipal': 'bg-blue-100 text-blue-800',
+  'Sostenibilidad': 'bg-emerald-100 text-emerald-800',
+  'Educación': 'bg-purple-100 text-purple-800',
+}
+---
+
+<Layout title="Blog | Reciclaje del Norte" description="Artículos sobre reciclaje de plásticos, aluminio, materiales de construcción reciclados, y sostenibilidad en Puerto Rico. Noticias de RDN.">
+  <!-- Hero -->
+  <section class="relative bg-rdn-green-dark pt-32 pb-20 overflow-hidden">
+    <div class="absolute top-0 right-0 w-96 h-96 bg-rdn-lime/5 rounded-full blur-[120px]"></div>
+    <div class="absolute bottom-0 left-0 w-64 h-64 bg-rdn-blue/5 rounded-full blur-[100px]"></div>
+    <div class="relative mx-auto max-w-[1440px] px-6 md:px-12 lg:px-20">
+      <span class="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.2em] text-rdn-lime bg-white/10 px-4 py-2 rounded-full mb-6 animate-fade-up">Blog</span>
+      <h1 class="heading-xl text-white mb-6 animate-fade-up stagger-1">
+        Noticias y<br/><span class="text-rdn-lime">recursos</span>
+      </h1>
+      <p class="text-xl text-white/60 max-w-2xl leading-relaxed animate-fade-up stagger-2">
+        Artículos sobre reciclaje, materiales, procesos industriales y sostenibilidad en Puerto Rico.
+      </p>
+    </div>
+  </section>
+
+  <!-- Blog posts -->
+  <section class="section-padding bg-rdn-white">
+    <div class="mx-auto max-w-[1440px]">
+      <!-- Featured post -->
+      {posts.filter(p => p.featured).map(post => (
+        <a href={`/blog/${post.slug}`} class="block bg-rdn-green-dark rounded-3xl overflow-hidden mb-16 reveal group hover:shadow-2xl transition-shadow duration-500">
+          <div class="grid lg:grid-cols-2 gap-0">
+            <div class="aspect-video lg:aspect-auto overflow-hidden">
+              <img src={post.image} alt={post.title} class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="eager" />
+            </div>
+            <div class="p-8 md:p-12 flex flex-col justify-center">
+              <div class="flex items-center gap-3 mb-6">
+                <span class={`text-xs font-semibold px-3 py-1 rounded-full ${tagColors[post.tag] || 'bg-white/10 text-white'}`}>{post.tag}</span>
+                <span class="text-xs text-white/40">{post.date}</span>
+              </div>
+              <h2 class="text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-4 group-hover:text-rdn-lime transition-colors duration-300">{post.title}</h2>
+              <p class="text-white/60 text-lg leading-relaxed mb-6">{post.excerpt}</p>
+              <div class="inline-flex items-center gap-2 text-rdn-lime font-semibold group-hover:gap-4 transition-all duration-300">
+                <span>Leer artículo</span>
+                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </div>
+            </div>
+          </div>
+        </a>
+      ))}
+
+      <!-- Post grid -->
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+        {posts.filter(p => !p.featured).map(post => (
+          <a href={`/blog/${post.slug}`} class="group bg-white rounded-2xl border border-rdn-sand-dark overflow-hidden card-hover reveal">
+            <div class="aspect-[4/3] overflow-hidden">
+              <img src={post.image} alt={post.title} class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" />
+            </div>
+            <div class="p-5">
+              <div class="flex items-center gap-3 mb-3">
+                <span class={`text-[10px] font-semibold px-2.5 py-1 rounded-full ${tagColors[post.tag] || 'bg-rdn-sand text-rdn-gray'}`}>{post.tag}</span>
+                <span class="text-[10px] text-rdn-gray">{post.date}</span>
+              </div>
+              <h3 class="text-base font-bold text-rdn-charcoal mb-2 group-hover:text-rdn-green transition-colors line-clamp-2">{post.title}</h3>
+              <p class="text-sm text-rdn-gray leading-relaxed line-clamp-3 mb-4">{post.excerpt}</p>
+              <div class="flex items-center justify-between">
+                <span class="text-xs text-rdn-gray/60">Por {post.author}</span>
+                <span class="inline-flex items-center gap-1 text-rdn-green text-xs font-semibold group-hover:gap-2 transition-all duration-300">
+                  Leer
+                  <svg class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </span>
+              </div>
+            </div>
+          </a>
+        ))}
+      </div>
+
+      <!-- CTA section -->
+      <div class="mt-16 bg-gradient-to-br from-rdn-green-dark to-rdn-green rounded-3xl p-10 md:p-14 text-center reveal">
+        <h3 class="text-2xl md:text-3xl font-bold text-white mb-4">¿Quieres saber más sobre reciclaje?</h3>
+        <p class="text-white/60 max-w-xl mx-auto mb-8">Visita nuestro Museo del Reciclaje en Arecibo o contáctanos para coordinar un recorrido por nuestras instalaciones.</p>
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+          <a href="/nosotros#museo" class="btn-lime">
+            Visitar Museo
+            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+          <a href="/contacto" class="inline-flex items-center gap-2 border border-white/20 text-white px-6 py-3 rounded-full text-sm font-semibold hover:bg-white/10 transition-all duration-300">
+            Contáctanos
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>
