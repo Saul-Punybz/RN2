@@ -113,33 +113,67 @@ const timeline = [
       <div id="museo" class="bg-gradient-to-br from-rdn-green-dark to-rdn-green rounded-3xl p-10 md:p-16 text-white reveal">
         <div class="grid lg:grid-cols-2 gap-12 items-center">
           <div>
-            <span class="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.2em] text-rdn-lime bg-rdn-lime/10 px-4 py-2 rounded-full mb-6">
-              Iniciativa Comunitaria
-            </span>
-            <h2 class="heading-md text-white mb-6">Museo del Reciclaje</h2>
+            <div class="flex items-center gap-5 mb-8">
+              <div class="bg-white rounded-2xl p-3 shrink-0">
+                <img src="/images/museo-logo.png" alt="Museo del Reciclaje" class="h-20 w-20 object-contain" />
+              </div>
+              <div>
+                <span class="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.2em] text-rdn-lime bg-rdn-lime/10 px-4 py-2 rounded-full mb-2">
+                  Iniciativa Comunitaria
+                </span>
+                <h2 class="heading-md text-white">Museo del Reciclaje</h2>
+              </div>
+            </div>
             <p class="text-white/70 leading-relaxed mb-6">
               Fundado en 2016, el Museo del Reciclaje es una organización sin fines de lucro dedicada a promover el arte, la educación y la investigación con materiales reciclados.
             </p>
             <p class="text-white/70 leading-relaxed mb-8">
               Un espacio único donde los desechos se transforman en obras de arte y herramientas educativas, inspirando a la próxima generación a pensar diferente sobre los materiales que descartamos.
             </p>
-            <div class="flex flex-wrap gap-4">
+            <div class="flex flex-wrap gap-4 mb-8">
               <span class="bg-white/10 px-4 py-2 rounded-full text-sm">Arte reciclado</span>
               <span class="bg-white/10 px-4 py-2 rounded-full text-sm">Educación ambiental</span>
               <span class="bg-white/10 px-4 py-2 rounded-full text-sm">Investigación</span>
               <span class="bg-white/10 px-4 py-2 rounded-full text-sm">Talleres</span>
             </div>
+            <div class="flex flex-wrap gap-4">
+              <a href="https://forms.gle/6aq2X5YdBGZLxfkYA" target="_blank" rel="noopener" class="btn-lime text-sm">
+                Reservar Visita
+                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </a>
+              <a href="https://www.google.com/maps/place/Museo+del+Reciclaje/@18.4861,-66.8253,17z/" target="_blank" rel="noopener" class="inline-flex items-center gap-2 border-2 border-white/30 text-white px-6 py-3 rounded-full font-semibold text-sm transition-all duration-300 hover:bg-white hover:text-rdn-green-dark">
+                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                Google Maps
+              </a>
+            </div>
           </div>
           <div class="bg-white/10 rounded-2xl p-10 backdrop-blur-sm border border-white/10">
             <div class="text-center">
-              <div class="w-20 h-20 bg-rdn-lime/20 rounded-2xl flex items-center justify-center mx-auto mb-6">
-                <svg class="w-10 h-10 text-rdn-lime" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 21h18M3 7l9-4 9 4M4 7v14M20 7v14M9 21V11h6v10"/></svg>
-              </div>
+              <img src="/images/museo-logo.png" alt="Museo del Reciclaje" class="h-44 w-44 object-contain mx-auto mb-6 bg-white rounded-2xl p-4" />
               <h3 class="text-xl font-bold mb-2">Visítanos</h3>
-              <p class="text-white/60 text-sm mb-6">Experiencias educativas para escuelas, familias y empresas</p>
-              <a href="/contacto" class="btn-lime text-sm">
-                Coordinar visita
-              </a>
+              <p class="text-white/60 text-sm mb-4">Experiencias educativas para escuelas, familias y empresas</p>
+              <div class="bg-white/10 rounded-xl p-4 mb-6 text-left">
+                <div class="flex items-start gap-3 mb-3">
+                  <svg class="w-4 h-4 text-rdn-lime mt-0.5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                  <p class="text-sm text-white/70">142 Ave Coballes Gandía KM 88.1 PR-2, Hatillo PR</p>
+                </div>
+                <div class="flex items-start gap-3 mb-3">
+                  <svg class="w-4 h-4 text-rdn-lime mt-0.5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+                  <p class="text-sm text-white/70">Lun–Vie 9am–5pm &bull; Sáb 9am–1pm</p>
+                </div>
+                <div class="flex items-start gap-3">
+                  <svg class="w-4 h-4 text-rdn-lime mt-0.5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+                  <a href="tel:787-544-6330" class="text-sm text-white/70 hover:text-rdn-lime transition-colors">787-544-6330</a>
+                </div>
+              </div>
+              <div class="flex flex-col gap-3">
+                <a href="https://forms.gle/6aq2X5YdBGZLxfkYA" target="_blank" rel="noopener" class="btn-lime text-sm w-full justify-center">
+                  Reservar Visita
+                </a>
+                <a href="https://www.museodelreciclaje.com" target="_blank" rel="noopener" class="text-sm text-rdn-lime hover:text-white transition-colors font-medium">
+                  museodelreciclaje.com &rarr;
+                </a>
+              </div>
             </div>
           </div>
         </div>
